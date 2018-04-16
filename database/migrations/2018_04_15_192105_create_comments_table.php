@@ -18,8 +18,8 @@ class CreateCommentsTable extends Migration
 
             $table->text('text');
             $table->integer('parent_id')->default(0);
-            $table->integer('article_id');
-            $table->integer('user_id');
+            $table->integer('article_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('like')->default(0);;
             $table->integer('dislike')->default(0);;
             $table->integer('prompt')->default(0);

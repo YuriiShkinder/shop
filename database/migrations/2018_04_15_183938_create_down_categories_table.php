@@ -17,7 +17,8 @@ class CreateDownCategoriesTable extends Migration
             $table->increments('id');
 
             $table->string('title');
-            $table->integer('category_id')->unsigned()->default(1);;
+            $table->integer('category_id')->unsigned()->default(1);
+            $table->integer('article_id')->unsigned()->default(1);
             $table->string('alias')->unique();
 
 
