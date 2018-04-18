@@ -9,11 +9,12 @@
 
 
 
-                        <h3><a href="http://pink/portfolios/project1">{{$category->title}}</a></h3>
+                        <h3 style="margin-top: 30px"><a href=" {{route('categories.show',['alias'=>$category->alias])}}">{{$category->title}}</a></h3>
 
 
-                @if($category->articles->count()>=3)
-                        @foreach($category->articles->random(3) as $article)
+                @if($articles->isNotEmpty())
+                        @foreach($articles->get($category->id) as $article)
+
                             <div class="portfolio-projects" >
                                 <div class="related_project ">
                                     <div class="overlay_a related_img">
@@ -22,19 +23,38 @@
                                             <h5>price {{$article->price}}$</h5>
                                         </div>
                                     </div>
-                                    <h4><a href="http://pink/portfolios/project2">{{$article->title}}</a></h4>
-                                    <p> {{str_limit($article->desc,200)}}</p>
+                                    <h4><a href="{{route('articles.show',['article'=>$article->id])}}">{{$article->title}}</a></h4>
+                                    <p> {{str_limit($article->desc,100)}}</p>
                                 </div>
-
-
                             </div>
 
                          @endforeach
-
-
                             <div class="clear"></div>
+
+                    @if($sales->has($category->id))
+                                @foreach($sales->get($category->id) as $sale)
+
+                                    <div class="portfolio-projects" >
+                                        <div class="related_project ">
+                                            <div class="overlay_a related_img">
+                                                <div class="overlay_wrapper ">
+                                                    <div class="saleArt" style="background: url({{env('THEME').'/images/sale.png' }}) no-repeat center center;background-size: 80px; "></div>
+                                                    <img style="width: 200px" src="{{json_decode($sale->article->img)->max}}" alt="{{$sale->title}}" title="{{$sale->title}}" />
+                                                    <h5>price {{$sale->article->price}}$</h5>
+                                                    <h5>sale price {{$sale->article->price-$sale->sale}}$</h5>
+                                                </div>
+                                            </div>
+                                            <h4><a href="{{route('articles.show',['article'=>$sale->article->id])}}">{{$sale->article->title}}</a></h4>
+                                            <p> {{str_limit($sale->article->desc,100)}}</p>
+                                        </div>
+                                    </div>
+
+                                @endforeach
+                        @else
+                                <h5>Нет акионых товаров категории: {{$category->title}}</h5>
+                    @endif
                     @else
-                        <h3>Нет товара категории: {{$category->title}}</h3>
+                        <h5>Нет товара категории: {{$category->title}}</h5>
 
                  @endif
                     <div class="clear"></div>
@@ -52,45 +72,24 @@
 
     <div class="sidebar group">
         <div class="widget-first widget recent-posts">
-            <h3>Последние записи блога</h3>
+            <h3>Top 5 comments</h3>
             <div class="recent-post group">
-                <div class="hentry-post group">
-                    <div class="thumb-img"><img src="http://pink/pink/images/articles/003-55x55.jpg " alt="003" title="003" /></div>
-                    <div class="text">
-                        <a href="http://pink/articles/privet" title="Nice &amp; Clean. The best for your blog!" class="title">This is the title of the first article. Enjoy it</a>
-                        <p class="post-date">July 17, 2016 </p>
-                    </div>
-                </div>
+                @if($comments)
+                    @foreach($comments as $comment)
+                        <div class="hentry-post group">
+                            <div class="thumb-img"><a href="{{route('articles.show',['article'=>$comment->article_id])}}"><img src="{{json_decode($comment->article->img)->mini}}" alt="{{$comment->id}}" title="{{$comment->id}}" /></a></div>
+                            <div class="text">
+                                <p class="title">{{str_limit($comment->text,50)}}</p>
+                                <p class="post-date"> {{is_object($comment->created_at) ? $comment->created_at->format('F d, Y  \a\t H:i') : '' }} </p>
+                                <p><span><img style="width: 10px" src="{{asset(env('THEME')).'/images/icons/heart.png'}}"> </span>{{$comment->like}}</p>
+                            </div>
+                        </div>
 
-                <div class="hentry-post group">
-                    <div class="thumb-img"><img src="http://pink/pink/images/articles/001-55x55.png " alt="003" title="003" /></div>
-                    <div class="text">
-                        <a href="http://pink/articles/article-2" title="Nice &amp; Clean. The best for your blog!" class="title">Nice &amp; Clean. The best for your blog!
-                        </a>
-                        <p class="post-date">July 16, 2016 </p>
-                    </div>
-                </div>
-
-                <div class="hentry-post group">
-                    <div class="thumb-img"><img src="http://pink/pink/images/articles/0037-55x55.jpg " alt="003" title="003" /></div>
-                    <div class="text">
-                        <a href="http://pink/articles/article-3" title="Nice &amp; Clean. The best for your blog!" class="title">Section shortcodes &amp; sticky posts!
-                        </a>
-                        <p class="post-date">July 16, 2016 </p>
-                    </div>
-                </div>
+                    @endforeach
+                 @endif
 
 
             </div>
-
-
-
-            <div class="widget-last widget text-image">
-                <h3>Customer support</h3>
-                <div class="text-image" style="text-align:left"><img src="http://pink/pink/images/callus.gif" alt="Customer support" /></div>
-                <p>Proin porttitor dolor eu nibh lacinia at ultrices lorem venenatis. Sed volutpat scelerisque vulputate. </p>
-            </div>
-
 
 
         </div>

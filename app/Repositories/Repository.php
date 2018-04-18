@@ -4,7 +4,7 @@ namespace App\Repositories;
 use Config;
 
 abstract class Repository{
-    protected $model;
+    public $model;
 
     public function get($select='*',$take=false,$pagination=false,$where=false){
         $builder=$this->model->select($select);
@@ -27,7 +27,7 @@ abstract class Repository{
         return $this->model->where('alias',$alias)->first();
     }
 
-    protected function check($result){
+    public function check($result){
         if($result->isEmpty()){
             return false;
         }

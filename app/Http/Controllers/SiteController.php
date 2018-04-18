@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     protected $c_rep;
+    protected $comm_rep;
     protected $a_rep;
     protected $m_rep;
     protected $title;
@@ -49,11 +50,11 @@ class SiteController extends Controller
                     if($item->title=='Категории'){
                         $cat=Category::all()->load('down');
                         foreach ($cat as $val) {
-                            $m->find($item->id)->add($val->title, $val->alias)->id($m->last()->id);
+                            $m->find($item->id)->add($val->title, route('categories.show',['alias'=>$val->alias]))->id($m->last()->id);
                             $i=$m->last()->id;
                             if(!$val->down->isEmpty()){
                                 foreach ($val->down as $k) {
-                                    $m->find($i)->add($k->title, $k->alias)->id($m->last()->id);
+                                    $m->find($i)->add($k->title, route('categories.show',['alias'=>$k->alias]))->id($m->last()->id);
 
                                 }
                             }

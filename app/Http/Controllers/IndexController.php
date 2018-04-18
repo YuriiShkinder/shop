@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Menu;
 use App\Repositories\ArticlesRepository;
 use App\Repositories\CategoriesReporitory;
+use App\Repositories\CommentsRepository;
 use App\Repositories\MenusRepository;
 use App\Second_Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-
+use DB;
 class IndexController extends SiteController
 {
-    public function __construct( ArticlesRepository $a_rep,CategoriesReporitory $c_rep)
+    public function __construct( ArticlesRepository $a_rep,CategoriesReporitory $c_rep,CommentsRepository $comments)
     {
+        $this->comm_rep=$comments;
         $this->c_rep=$c_rep;
         $this->a_rep=$a_rep;
         parent::__construct(new MenusRepository(new Menu()));
@@ -33,38 +36,60 @@ class IndexController extends SiteController
         $this->title='Home';
         $sliderItem=$this->getSliders();
         $categories=$this->getCategories();
-        $sale=$this->getSale();
-        $this->vars=array_add($this->vars,'categories',$categories);
-        $content=view(env('THEME').'.content')->with(['sales'=>$sale,'categories'=>$categories])->render();
+        $comments=$this->getComments();
+       // $this->vars=array_add($this->vars,'categories',$categories);
+        $content=view(env('THEME').'.content')->with([
+            'sales'=>$categories->get('sale'),
+            'categories'=>$categories->get('categories'),
+            'articles'=>$categories->get('articles'),
+            'comments'=>$comments
+        ])->render();
         $this->vars=array_add($this->vars,'content',$content);
         $sliders=view(env('THEME').'.slider')->with('sliders',$sliderItem)->render();
         $this->vars=array_add($this->vars,'sliders',$sliders);
 
         return $this->renderOutput();
     }
-    public function getSale(){
-        $sale=Second_Categories::get()->load('article.categories');
-       // dd($sale->pluck('article.categories')->collapse()->unique('title'));
-        return $sale;
+
+    public function getComments(){
+        $comments=$this->comm_rep->model->orderByDesc('like')->limit(5)->get()->load('article');
+        return $comments;
     }
 
     public function getCategories(){
+        $categories=$this->c_rep->get();
+        $categories->load('articles.second.article');
         $collection=Collection::make();
+        $collection->put('categories',Collection::make($categories));
+        $collection->put('articles',Collection::make());
 
-        $categories=$this->c_rep->get()->load('down','articles.second');
-//        $collection->put('categories',$categories);
-//        $collection->get('categories');
-//        dd($collection->get('categories')->put('sale','12')->get('sale'));
-//        dd($categories[0]->articles->pluck('second')->collapse());
-        $categories->map(function ($item){
-            $item->articles->map(function ($val){
-                $val->img=json_decode($val->img);
-           });
+        $collection->put('sale',Collection::make());
+        $categories->each(function ($item) use ($collection) {
+           if($item->articles->pluck('second')->collapse()->isNotEmpty()){
+              if($item->articles->pluck('second')->collapse()->count()>=2){
+                   $collection->get('sale') ->put($item->id,$item->articles->pluck('second')->collapse()->random(2));
+              }else{
+                  $collection->get('sale') ->put($item->id,$item->articles->pluck('second')->collapse());
+              }
+           }
+
+            if($item->articles->isNotEmpty()){
+                if($item->articles->count()>=3){
+                    $collection->get('articles')->put($item->id,$item->articles->random(3));
+                }else{
+                    $collection->get('articles')->put($item->id,$item->articles);
+                }
+
+            }
         });
 
-        return $categories;
 
+        $this->c_rep->check($collection->get('articles')->collapse());
+
+
+return $collection;
     }
+
 
     public function getSliders(){
 
@@ -82,69 +107,4 @@ class IndexController extends SiteController
         return $sliders;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

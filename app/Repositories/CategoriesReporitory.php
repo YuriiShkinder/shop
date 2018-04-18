@@ -18,4 +18,16 @@ class CategoriesReporitory extends Repository
         $this->model=$category;
     }
 
+    public function one($alias, $attr = [])
+    {
+        $category= parent::one($alias, $attr);
+        if ($category && !empty($attr)) {
+
+            $category->load('articles');
+        }
+
+        return $category;
+
+    }
+
 }

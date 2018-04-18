@@ -30,7 +30,7 @@
                                     <h3>{!! str_limit($slider->desc,200) !!}</h3>
 
 
-                                        {!! Html::link('/','More',['class' => 'btn btn-the-salmon-dance-3','style'=>'padding:5px 20px;margin:20px 0']) !!}
+                                        {!! Html::link(route('articles.show',['article'=>$slider->id]),'More',['class' => 'btn btn-the-salmon-dance-3','style'=>'padding:5px 20px;margin:20px 0']) !!}
 
 
                                 </div>

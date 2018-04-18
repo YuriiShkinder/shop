@@ -893,7 +893,7 @@ position: absolute;
 }
 
 .blink_me {
-    animation: blinker 1s linear infinite;
+    animation: blinker 2s linear infinite;
 }
 
 @keyframes blinker {
@@ -922,3 +922,17 @@ position: absolute;
     box-sizing: border-box;
 }
 
+
+.saleArt{
+    display: inline-block;
+    position: absolute;
+right: -20%;
+    top:-30%;
+    height: 80px;
+    width: 80px;
+
+}
+.pagination {
+    display: flex;
+  justify-content: center;
+}
