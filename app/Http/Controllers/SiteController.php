@@ -42,20 +42,18 @@ class SiteController extends Controller
 
     public function getMenu(){
         $menu=$this->m_rep->get();
-
         $mBuilder=\Menu::make('MyNav',function ($m) use ($menu){
-
             foreach ($menu as $item){
                 if($item->parent_id==0){
                     $m->add($item->title,$item->path)->id($item->id);
                     if($item->title=='Категории'){
                         $cat=Category::all()->load('down');
                         foreach ($cat as $val) {
-
                             $m->find($item->id)->add($val->title, $val->alias)->id($m->last()->id);
+                            $i=$m->last()->id;
                             if(!$val->down->isEmpty()){
-                                foreach ($cat as $k) {
-                                    $m->find($m->last()->id)->add($k->title, $k->alias)->id($m->last()->id);
+                                foreach ($val->down as $k) {
+                                    $m->find($i)->add($k->title, $k->alias)->id($m->last()->id);
 
                                 }
                             }
@@ -63,7 +61,6 @@ class SiteController extends Controller
                     }
 
                 }else{
-
                     if($m->find($item->parent_id)){
                         $m->find($item->parent_id)->add($item->title,$item->path)->id($item->id);
                     }
@@ -71,9 +68,6 @@ class SiteController extends Controller
                 }
             }
         });
-
-
         return $mBuilder;
-
     }
 }

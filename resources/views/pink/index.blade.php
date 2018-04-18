@@ -7,7 +7,7 @@
 
 @section('slider')
 
-    {{--{!! $sliders !!}--}}
+    {!! $sliders !!}
 
     @endsection
 

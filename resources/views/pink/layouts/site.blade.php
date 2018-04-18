@@ -79,6 +79,8 @@
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.colorbox-min.js"></script> <!-- nav -->
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.tweetable.js"></script>
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/myscripts.js"></script>
+
+
 </head>
 <!-- END HEAD -->
 
@@ -126,7 +128,7 @@
         @yield('slider')
         <div class="wrap_result"></div>
         <!-- START PRIMARY -->
-        <div id="primary" class="sidebar-{{isset($bar)? $bar : 'no'}}">
+        <div id="primary" class="sidebar-right">
             <div class="inner group">
                 <!-- START CONTENT -->
             @yield('content')
@@ -147,6 +149,7 @@
 <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.custom.js"></script>
 <script type="text/javascript" src="{{asset(env('THEME'))}}/js/contact.js"></script>
 <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.mobilemenu.js"></script>
+
 
 </body>
 <!-- END BODY -->

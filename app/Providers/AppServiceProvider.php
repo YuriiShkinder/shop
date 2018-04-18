@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         DB::listen(function ($query){
-             dump($query->sql);
+            // dump($query->sql);
         });
     }
 

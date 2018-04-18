@@ -863,3 +863,62 @@ form input[type="text"], form textarea { border: 1px solid #CFCFCF; -webkit-tran
     display: none;
     z-index: 5005
 }
+
+.sale{
+display: inline-block;
+    position: absolute;
+    right: 0;
+    height: 100px;
+    width: 100px;
+}
+.price_sale{
+
+position: absolute;
+    top:40%;
+    margin: 0 35%;
+    color: wheat;
+}
+
+
+.slide-content-holder-content{
+
+    padding: 20px 50px;
+    position: absolute;
+    right: 25%;
+    left: 25%;
+   top:70px;
+    border-radius: 5px;
+
+    background: rgba(0, 48, 204, 0.5);
+}
+
+.blink_me {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+
+    }
+}
+
+.slide-title{
+    display: flex;
+    align-items: top;
+
+}
+.slide-title img{
+    border-radius: 10px;
+    display: inline-block;
+    width: 25%;
+    height: 120px;
+
+}
+.slide-title >div{
+    padding: 0 20px;
+    display: inline-block;
+    width: 70%;
+    box-sizing: border-box;
+}
+

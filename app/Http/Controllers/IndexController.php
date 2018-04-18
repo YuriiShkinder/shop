@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Menu;
 use App\Repositories\ArticlesRepository;
+use App\Repositories\CategoriesReporitory;
 use App\Repositories\MenusRepository;
+use App\Second_Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class IndexController extends SiteController
 {
-    public function __construct( ArticlesRepository $a_rep)
+    public function __construct( ArticlesRepository $a_rep,CategoriesReporitory $c_rep)
     {
+        $this->c_rep=$c_rep;
         $this->a_rep=$a_rep;
         parent::__construct(new MenusRepository(new Menu()));
         $this->template=env('THEME').'.index';
@@ -24,42 +28,56 @@ class IndexController extends SiteController
      */
     public function index()
     {
+
+        $this->getCategories();
         $this->title='Home';
-//        $sliderItem=$this->getSliders();
-        $content=view(env('THEME').'.content')->render();
-       $this->vars=array_add($this->vars,'content',$content);
-//
-//        $sliders=view(env('THEME').'.slider')->with('sliders',$sliderItem)->render();
-//        $this->vars=array_add($this->vars,'sliders',$sliders);
-//
-//        $articles=$this->getArticles();
+        $sliderItem=$this->getSliders();
+        $categories=$this->getCategories();
+        $sale=$this->getSale();
+        $this->vars=array_add($this->vars,'categories',$categories);
+        $content=view(env('THEME').'.content')->with(['sales'=>$sale,'categories'=>$categories])->render();
+        $this->vars=array_add($this->vars,'content',$content);
+        $sliders=view(env('THEME').'.slider')->with('sliders',$sliderItem)->render();
+        $this->vars=array_add($this->vars,'sliders',$sliders);
 
         return $this->renderOutput();
     }
-
-    public function getArticles(){
-        $articles=$this->a_rep->get(['title','created_at','img','alias'],Config::get('settings.home_articles_count'));
-
-        return $articles;
-
+    public function getSale(){
+        $sale=Second_Categories::get()->load('article.categories');
+       // dd($sale->pluck('article.categories')->collapse()->unique('title'));
+        return $sale;
     }
-    public function getPortfolio(){
-        $portfolio=$this->p_rep->get('*',Config::get('settings.home_port_count'));
 
-        return $portfolio;
+    public function getCategories(){
+        $collection=Collection::make();
+
+        $categories=$this->c_rep->get()->load('down','articles.second');
+//        $collection->put('categories',$categories);
+//        $collection->get('categories');
+//        dd($collection->get('categories')->put('sale','12')->get('sale'));
+//        dd($categories[0]->articles->pluck('second')->collapse());
+        $categories->map(function ($item){
+            $item->articles->map(function ($val){
+                $val->img=json_decode($val->img);
+           });
+        });
+
+        return $categories;
+
     }
 
     public function getSliders(){
-        $sliders=$this->s_rep->get();
+
+        $sliders=$this->a_rep->get(['id','title','desc','img','price'])->load('second')->filter(function ($item) {
+            if($item->second->isNotEmpty()){
+                return $item;
+            }
+        })->random(4);
+
         if($sliders->isEmpty()){
 
             return false;
         }
-
-        $sliders->transform(function ($item,$key){
-            $item->img=Config::get('settings.slider_path').'/'.$item->img;
-            return $item;
-        });
 
         return $sliders;
     }
