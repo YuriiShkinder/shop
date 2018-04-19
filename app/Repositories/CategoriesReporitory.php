@@ -23,7 +23,7 @@ class CategoriesReporitory extends Repository
         $category= parent::one($alias, $attr);
         if ($category && !empty($attr)) {
 
-            $category->load('articles');
+            $category->load('articles','down');
         }
 
         return $category;

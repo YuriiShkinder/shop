@@ -54,7 +54,7 @@ class SiteController extends Controller
                             $i=$m->last()->id;
                             if(!$val->down->isEmpty()){
                                 foreach ($val->down as $k) {
-                                    $m->find($i)->add($k->title, route('categories.show',['alias'=>$k->alias]))->id($m->last()->id);
+                                    $m->find($i)->add($k->title, route('down',['category'=>$val->alias,'down'=>$k->alias]))->id($m->last()->id);
 
                                 }
                             }

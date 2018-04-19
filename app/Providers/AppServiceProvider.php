@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Schema;
 use DB;
-
+use Blade;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,6 +15,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::directive('set',function ($exp){
+            list($name,$val)=explode(',',$exp);
+            return "<?php $name=$val ?>";
+        });
+
+
         Schema::defaultStringLength(191);
         DB::listen(function ($query){
             // dump($query->sql);

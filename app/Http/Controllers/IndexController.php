@@ -11,7 +11,7 @@ use App\Repositories\MenusRepository;
 use App\Second_Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use DB;
+
 class IndexController extends SiteController
 {
     public function __construct( ArticlesRepository $a_rep,CategoriesReporitory $c_rep,CommentsRepository $comments)

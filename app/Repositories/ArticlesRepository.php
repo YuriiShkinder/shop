@@ -17,5 +17,7 @@ class ArticlesRepository extends Repository
     {
         $this->model=$article;
     }
-
+    public function one($alias,$attr=[]){
+        return $this->model->where('id',$alias)->paginate(2);
+    }
 }

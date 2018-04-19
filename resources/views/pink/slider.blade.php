@@ -15,7 +15,7 @@
                         <div class="slide-content-holder inner" >
 
                             <div class="slide-content-holder-content" >
-                                <div class="sale" style="background: url({{env('THEME').'/images/sale.png' }}) no-repeat center center;background-size: 100px;"><p class="price_sale" >{{$slider->second->first()->title}}</p></div>
+                                <div class="sale" style="background: url({{env('THEME').'/images/sale.png' }}) no-repeat center center;background-size: 100px;"><p class="price_sale" >{{str_limit($slider->second->first()->title,6)}}</p></div>
                                 <div class="slide-title">
                                     <img src="{{$slider->img->max}}">
                                     <div>

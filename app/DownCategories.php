@@ -12,4 +12,8 @@ class DownCategories extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function article(){
+        return $this->hasOne(Article::class);
+    }
+
 }

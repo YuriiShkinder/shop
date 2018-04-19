@@ -14,6 +14,6 @@ class CommentsTableSeeder extends Seeder
         DB::statement("SET foreign_key_checks=0");
         DB::table('comments')->truncate();
         DB::statement("SET foreign_key_checks=1");
-        factory('App\Comment',50)->create();
+        factory('App\Comment',150)->create();
     }
 }

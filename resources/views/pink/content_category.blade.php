@@ -1,9 +1,18 @@
 <div style="width: 80% ;  margin-left: 10%" id="content-page" class="content group ">
     <div class="hentry group">
-        @if($category)
 
+            @if($category)
             <div id="portfolio" class="portfolio-big-image">
+                @if(isset($category->down) && $category->down->isNotEmpty())
+                    <h3>Подкатегории</h3>
+                    @foreach($category->down as $down)
 
+                        {!! Html::link(route('down',['categories'=>$category->alias,'down'=>$down->alias]),$down->title,['class' => 'btn btn-the-salmon-dance-3','style'=>'padding:5px 20px;margin:20px 0']) !!}
+
+                        @endforeach
+
+                    @endif
+                    <h3>Toвары</h3>
                 @foreach($articles as $article)
 
                     <div class="hentry work group">
@@ -18,6 +27,7 @@
                             <p>{{ str_limit($article->text,200) }}</p>
                             <div class="clear"></div>
                             <div class="work-skillsdate">
+                                <p class="skills"><span class="label">category:</span> {{$category->title}}</p>
                                 <p class="skills"><span class="label">price:</span> {{$article->price}}</p>
 
 
@@ -36,7 +46,8 @@
 
 
                 <div class="general-pagination group">
-                    @if ($articles->lastPage() > 1)
+
+                        @if( $articles->lastPage() > 1)
                         <ul class="pagination">
 
                             @if ($articles->currentPage() !== 1)
@@ -57,8 +68,10 @@
 
                                 <a href="{{ $articles->url($articles->currentPage()+1) }}" ><img src="{{asset(env('THEME').'/images/icons/for_button/arrow.png')}}"></a>
                             @endif
+
                         </ul>
-                    @endif
+                     @endif
+
 
 
                 </div>
