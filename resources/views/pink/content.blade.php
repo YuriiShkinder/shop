@@ -72,16 +72,17 @@
 
     <div class="sidebar group">
         <div class="widget-first widget recent-posts">
-            <h3>Top 5 comments</h3>
+            <h3>Tоп-5 популярных (наиболее
+                комментируемых) товаров</h3>
             <div class="recent-post group">
                 @if($comments)
                     @foreach($comments as $comment)
                         <div class="hentry-post group">
-                            <div class="thumb-img"><a href="{{route('articles.show',['article'=>$comment->article_id])}}"><img src="{{json_decode($comment->article->img)->mini}}" alt="{{$comment->id}}" title="{{$comment->id}}" /></a></div>
+                            <div class="thumb-img"><a href="{{route('articles.show',['article'=>$comment->get('article')->id])}}"><img src="{{json_decode($comment->get('article')->img)->mini}}" alt="{{$comment->get('article')->title}}" title="{{$comment->get('article')->title}}" /></a></div>
                             <div class="text">
-                                <p class="title">{{str_limit($comment->text,50)}}</p>
-                                <p class="post-date"> {{is_object($comment->created_at) ? $comment->created_at->format('F d, Y  \a\t H:i') : '' }} </p>
-                                <p><span><img style="width: 10px" src="{{asset(env('THEME')).'/images/icons/heart.png'}}"> </span>{{$comment->like}}</p>
+                                <p class="title">{{str_limit($comment->get('article')->text,50)}}</p>
+                                <p class="post-date"> {{is_object($comment->get('article')->created_at) ? $comment->get('article')->created_at->format('F d, Y  \a\t H:i') : '' }} </p>
+                                <p><span><img style="width: 10px" src="{{asset(env('THEME')).'/images/icons/chat.png'}}"> </span>{{$comment->get('total')}} коментария</p>
                             </div>
                         </div>
 

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Article;
 use App\Category;
 use App\DownCategories;
+use App\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -38,6 +39,10 @@ class RouteServiceProvider extends ServiceProvider
         $this->bind('down',function ($value){
 
             return DownCategories::where('alias',$value)->first();
+        });
+        $this->bind('user',function ($value){
+
+            return User::where('login',$value)->first();
         });
 
         $this->bind('article',function ($value){

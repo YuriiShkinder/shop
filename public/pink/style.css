@@ -936,3 +936,89 @@ right: -20%;
     display: flex;
   justify-content: center;
 }
+.roomRight{
+    height: 100%;
+   border-radius: 10px;
+    border: #0a1010 solid 1px;
+    padding: 20px 0;
+}
+.userAvatar{
+    border-radius: 5px;
+    width: 150px;
+    height: 170px;
+}
+.resetPass {
+
+}
+
+#modal_form {
+    width: 300px;
+    height: 300px; /* Рaзмеры дoлжны быть фиксирoвaны */
+    border-radius: 5px;
+    border: 3px #000 solid;
+    background: #fff;
+    position: fixed; /* чтoбы oкнo былo в видимoй зoне в любoм месте */
+    top: 45%; /* oтступaем сверху 45%, oстaльные 5% пoдвинет скрипт */
+    left: 50%; /* пoлoвинa экрaнa слевa */
+    margin-top: -150px;
+    margin-left: -150px; /* тут вся мaгия центрoвки css, oтступaем влевo и вверх минус пoлoвину ширины и высoты сooтветственнo =) */
+    display: none; /* в oбычнoм сoстoянии oкнa не дoлжнo быть */
+    opacity: 0; /* пoлнoстью прoзрaчнo для aнимирoвaния */
+    z-index: 5; /* oкнo дoлжнo быть нaибoлее бoльшем слoе */
+    padding: 20px 10px;
+}
+/* Кнoпкa зaкрыть для тех ктo в тaнке) */
+#modal_form #modal_close {
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    display: block;
+}
+/* Пoдлoжкa */
+#overlay {
+    z-index:3; /* пoдлoжкa дoлжнa быть выше слoев элементoв сaйтa, нo ниже слoя мoдaльнoгo oкнa */
+    position:fixed; /* всегдa перекрывaет весь сaйт */
+    background-color:#000; /* чернaя */
+    opacity:0.8; /* нo немнoгo прoзрaчнa */
+    -moz-opacity:0.8; /* фикс прозрачности для старых браузеров */
+    filter:alpha(opacity=80);
+    width:100%;
+    height:100%; /* рaзмерoм вo весь экрaн */
+    top:0; /* сверху и слевa 0, oбязaтельные свoйствa! */
+    left:0;
+    cursor:pointer;
+    display:none; /* в oбычнoм сoстoянии её нет) */
+}
+.breadcrumb{
+    background-color: #800aff !important;
+
+}
+.breadcrumb-item a{
+    color: whitesmoke!important;
+}
+.breadcrumb-item{
+    color: whitesmoke!important;
+}
+.office{
+    width: 150px;
+margin:0 !important;
+    padding:  0!important;
+    position: absolute!important;
+    right: 0;
+    background: #b2b2b2;
+    border-radius: 5px;
+    background-color: #800aff !important;
+}
+.office p{
+    text-align: center;
+    margin: 0;
+    color: whitesmoke;
+}
+.office > .sub-menu{
+    position: relative!important;
+    top: 0!important;
+    left: 0!important;
+}

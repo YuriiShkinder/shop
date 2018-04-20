@@ -2,7 +2,7 @@
 @if($sliders->isNotEmpty())
 
 
-    <div id="slider-cycle" class="slider cycle no-responsive slider_cycle group" style="height:485px;">
+    <div id="slider-cycle" class="slider cycle no-responsive slider_cycle group" style="height:485px; margin-top: 20px">
 
         <ul class="slider">
 
@@ -19,15 +19,15 @@
                                 <div class="slide-title">
                                     <img src="{{$slider->img->max}}">
                                     <div>
-                                            <h1 style="margin: 0" >{!! $slider->title !!}</h1>
-                                            <p  style="color:red; text-decoration:line-through ;font-size: 16px">{{$slider->price}}$</p>
+                                            <h3 style="margin: 0" >{!! $slider->title !!}</h3>
+                                            <p  style="color:red; text-decoration:line-through ;">{{$slider->price}}$</p>
                                             <p class="blink_me" style="color: red; text-decoration: underline;;font-size: 16px"> new price {{$slider->price - $slider->second->first()->sale}}$</p>
                                     </div>
                                 </div>
 
                                 <div class="slide-content" style="color:#fff">
 
-                                    <h3>{!! str_limit($slider->desc,200) !!}</h3>
+                                    <h5>{!! str_limit($slider->desc,200) !!}</h5>
 
 
                                         {!! Html::link(route('articles.show',['article'=>$slider->id]),'More',['class' => 'btn btn-the-salmon-dance-3','style'=>'padding:5px 20px;margin:20px 0']) !!}

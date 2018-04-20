@@ -40,7 +40,7 @@
         <p class="tags">Tags: <a href="#" rel="tag">book</a>, <a href="#" rel="tag">css</a>, <a href="#" rel="tag">design</a>, <a href="#" rel="tag">inspiration</a></p>
         <div class="clear"></div>
     </div>
-    @can('VIEW_ADMIN')
+    @auth
     <!-- START COMMENTS -->
     <div id="comments">
         <h3 id="comments-title">

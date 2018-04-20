@@ -61,6 +61,8 @@ class Handler extends ExceptionHandler
                     \Log::alert('Страница не найдена - '. $request->url());
 
                     return response()->view(env('THEME').'.404',['bar' => 'no','title' =>'Страница не найдена','navigation'=>$navigation]);
+                case '403':
+                    return response('У вас нет прав доступа до админпанели ');
             }
         }
         return parent::render($request, $exception);

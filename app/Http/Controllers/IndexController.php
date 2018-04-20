@@ -11,7 +11,7 @@ use App\Repositories\MenusRepository;
 use App\Second_Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-
+use DB;
 class IndexController extends SiteController
 {
     public function __construct( ArticlesRepository $a_rep,CategoriesReporitory $c_rep,CommentsRepository $comments)
@@ -37,7 +37,7 @@ class IndexController extends SiteController
         $sliderItem=$this->getSliders();
         $categories=$this->getCategories();
         $comments=$this->getComments();
-       // $this->vars=array_add($this->vars,'categories',$categories);
+
         $content=view(env('THEME').'.content')->with([
             'sales'=>$categories->get('sale'),
             'categories'=>$categories->get('categories'),
@@ -52,7 +52,15 @@ class IndexController extends SiteController
     }
 
     public function getComments(){
-        $comments=$this->comm_rep->model->orderByDesc('like')->limit(5)->get()->load('article');
+        //$comments=$this->comm_rep->model->orderByDesc('like')->limit(5)->get()->load('article');
+
+        $comments=$this->comm_rep->model->groupBy('article_id')->select('article_id', DB::raw('count(article_id) as total'))->orderByDesc('total')->limit(5)->get()->load('article');
+       $comments->transform(function ($item){
+
+          return collect(['total'=>$item->total,'article'=>$item->article]);
+       });
+
+
         return $comments;
     }
 
