@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Article;
 use App\Category;
 use App\DownCategories;
+use App\Menu;
 use App\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -53,6 +54,11 @@ class RouteServiceProvider extends ServiceProvider
         $this->bind('article',function ($value){
 
             return Article::where('id',$value)->first();
+        });
+
+        $this->bind('menu',function ($value){
+
+            return Menu::where('id',$value)->first();
         });
 
 
