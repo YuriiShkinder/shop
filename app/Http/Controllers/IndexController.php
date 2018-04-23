@@ -52,7 +52,6 @@ class IndexController extends SiteController
     }
 
     public function getComments(){
-        //$comments=$this->comm_rep->model->orderByDesc('like')->limit(5)->get()->load('article');
 
         $comments=$this->comm_rep->model->groupBy('article_id')->select('article_id', DB::raw('count(article_id) as total'))->orderByDesc('total')->limit(5)->get()->load('article');
        $comments->transform(function ($item){

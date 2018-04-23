@@ -42,6 +42,8 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'],function() {
 
     Route::resource('/menus','Admin\MenusController',['as'=>'admin']);
 
+    Route::resource('/styles','Admin\StylesController',['as'=>'admin']);
+
 
 
 });

@@ -31,6 +31,8 @@ class AdminController extends Controller
 
     public function renderOutput()
     {
+        $style=\App\Style::all()->last();
+        $this->vars=array_add($this->vars,'style',$style);
         $this->vars=array_add($this->vars,'title',$this->title);
         $menu=$this->getMenu();
         $navigation=view(env('THEME').'.admin.navigation')->with('menu',$menu)->render();

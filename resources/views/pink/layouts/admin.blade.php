@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset(env('THEME')) }}/css/buttons.css" /> <!-- MAIN THEME STYLESHEET -->
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset(env('THEME')) }}/css/cache-custom.css" /> <!-- MAIN THEME STYLESHEET -->
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset(env('THEME')) }}/css/jquery-ui.css" /> <!-- MAIN THEME STYLESHEET -->
+    <link rel="stylesheet"  href="{{asset(env('THEME'))}}/bootstrap/css/bootstrap.min.css" type="text/css" media="all" />
 
 
 
@@ -28,6 +29,8 @@
     <link rel='stylesheet' href='{{ asset(env('THEME')) }}/css/font-awesome.css' type='text/css' media='all' />
 
     <!-- JAVASCRIPTs -->
+    <script type="text/javascript" src="{{asset(env('THEME'))}}/bootstrap/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.js"></script>
     <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery-ui.js"></script>
     <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/ckeditor/ckeditor.js"></script>
@@ -42,19 +45,19 @@
 <body class="no_js responsive {{ (Route::currentRouteName() == 'home') ? 'page-template-home-php' : ''}} stretched">
 
 <!-- START BG SHADOW -->
-<div class="bg-shadow">
+<div style="background-color: {{$style->site or '#fff'}}"  class="bg-shadow">
 
     <!-- START WRAPPER -->
     <div id="wrapper" class="group">
 
         <!-- START HEADER -->
-        <div id="header" class="group">
+        <div style="background-color: {{$style->header or '#fff'}}" id="header" class="group">
 
             <div class="group inner">
 
                 <!-- START LOGO -->
                 <div id="logo" class="group">
-                    <a href="index.html" title="Pink Rio"><img src="{{ asset(env('THEME')) }}/images/logo.png" title="Pink Rio" alt="Pink Rio" /></a>
+                    <a href="/" title="Pink Rio"><img src="{{ asset(env('THEME')) }}/images/logo.png" title="Pink Rio" alt="Pink Rio" /></a>
                 </div>
                 <!-- END LOGO -->
 

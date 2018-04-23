@@ -67,7 +67,7 @@
 
     <!-- JAVASCRIPTs -->
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.js"></script>
-    {{--<script type="text/javascript" src="{{asset(env('THEME'))}}/bootstrap/js/bootstrap.min.js"></script>--}}
+    <script type="text/javascript" src="{{asset(env('THEME'))}}/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/comment-reply.js"></script>
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.quicksand.js"></script>
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.tipsy.js"></script>
@@ -94,13 +94,13 @@
 <body class="no_js responsive {{(Route::currentRouteName()=='home') ? 'page-template-home-php' : ''}} stretched">
 
 <!-- START BG SHADOW -->
-<div class="bg-shadow">
+<div style="background-color: {{$style->site or '#fff'}}"  class="bg-shadow">
 
     <!-- START WRAPPER -->
     <div id="wrapper" class="group">
 
         <!-- START HEADER -->
-        <div id="header" class="group">
+        <div style="background-color: {{$style->header or '#fff'}}" id="header" class="group">
 
             <div class="group inner">
 

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Repositories\MenusRepository;
 
+use App\Style;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -31,10 +32,11 @@ class SiteController extends Controller
         $menu=$this->getMenu();
         $navigation = view(env('THEME') . '.navigation')->with('menu',$menu)->render();
         $this->vars = array_add($this->vars, 'navigation', $navigation);
-
+        $style=Style::all()->last();
         $footer=view(env('THEME').'.footer')->render();
 
         $this->vars=array_add($this->vars,'footer',$footer);
+        $this->vars=array_add($this->vars,'style',$style);
         $this->vars=array_add($this->vars,'title',$this->title);
 
         return view($this->template)->with($this->vars);

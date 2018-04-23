@@ -35,7 +35,7 @@ class CategoryController extends SiteController
             $this->title=$category->title;
 
         }
-        $articles=$category->articles()->paginate(2);
+        $articles=$category->articles()->paginate(5);
         $articles->transform(function ($item){
             $item->img=json_decode( $item->img);
             return $item;
