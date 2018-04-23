@@ -16,6 +16,8 @@ Route::post('login',['uses'=>'Auth\AuthController@login']);
 
 Route::get('logout',['uses'=>'Auth\AuthController@logout']);
 
+Route::match(['get','post'],'cart',['uses'=>'CartController@index'])->name('cart');
+
 Route::group(['prefix' => 'office','middleware'=> 'auth'],function (){
 
     Route::get('/{user}',['uses' => 'OfficeController@index','as' => 'office']);
@@ -27,6 +29,19 @@ Route::group(['prefix' => 'office','middleware'=> 'auth'],function (){
 Route::group(['prefix' => 'admin','middleware'=> 'auth'],function() {
 
     Route::get('/',['uses' => 'Admin\IndexController@index','as' => 'admin']);
+
+    Route::resource('/articles','Admin\ArticleController',['as'=>'admin']);
+
+    Route::resource('/categories','Admin\CategoriesController',['as'=>'admin','parameters'=>['category'=>'alias']]);
+
+    Route::match(['get','put','delete'],'/categories/{categories}/{down}/edit',['uses'=>'Admin\CategoriesController@down','as'=>'adminDown']);
+
+    Route::resource('/comments','Admin\CommentsController',['as'=>'admin']);
+
+    Route::resource('/styles','Admin\StylesController',['only'=>['index','update','edit'],'as'=>'admin']);
+
+    Route::resource('/menus','Admin\MenusController',['as'=>'admin']);
+
 
 
 });

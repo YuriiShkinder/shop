@@ -10,7 +10,7 @@ namespace App\Repositories;
 
 
 use App\Category;
-
+use Validator;
 class CategoriesReporitory extends Repository
 {
     public function __construct(Category $category)
@@ -29,5 +29,14 @@ class CategoriesReporitory extends Repository
         return $category;
 
     }
+
+    public function deleteCategory($category){
+
+        if($category->delete()){
+            return ['status'=>'Сылка удалена'];
+        }
+    }
+
+
 
 }

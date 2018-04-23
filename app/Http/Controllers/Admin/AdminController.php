@@ -9,7 +9,8 @@ use Gate;
 
 class AdminController extends Controller
 {
-    protected $p_rep;
+    protected $m_rep;
+    protected $c_rep;
     protected $a_rep;
     protected $user;
     protected $template;
@@ -47,8 +48,11 @@ class AdminController extends Controller
     public function getMenu() {
         return \Menu::make('adminMenu', function($menu) {
 
-
-                $menu->add('Статьи',array('route'  => 'login'));
+            $menu->add('Категории',array('route'  => 'admin.categories.index'));
+            $menu->add('Товары',array('route'  => 'admin.articles.index'));
+            $menu->add('Меню',array('route'  => 'admin.menus.index'));
+            $menu->add('Комментарии',array('route'  => 'admin.comments.index'));
+            $menu->add('Стили',array('route'  => 'admin.styles.index'));
 
 
 

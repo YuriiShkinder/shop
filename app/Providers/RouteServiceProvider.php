@@ -36,6 +36,11 @@ class RouteServiceProvider extends ServiceProvider
             return Category::where('alias',$value)->first();
         });
 
+        $this->bind('category',function ($value){
+
+            return Category::where('alias',$value)->first();
+        });
+
         $this->bind('down',function ($value){
 
             return DownCategories::where('alias',$value)->first();

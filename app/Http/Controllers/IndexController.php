@@ -84,11 +84,16 @@ class IndexController extends SiteController
             if($item->articles->isNotEmpty()){
                 if($item->articles->count()>=3){
                     $collection->get('articles')->put($item->id,$item->articles->random(3));
+                }elseif($item->articles->count()==1){
+                    $collection->get('articles')->put($item->id,$item->articles->random());
                 }else{
-                    $collection->get('articles')->put($item->id,$item->articles);
+                    $collection->get('articles')->put($item->id,collect());
                 }
 
+            }else{
+                $collection->get('articles')->put($item->id,collect());
             }
+
         });
 
 

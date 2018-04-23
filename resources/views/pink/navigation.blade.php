@@ -18,15 +18,13 @@
                     </ul>
 
                     @endguest
-
-
             </li>
-
-
-
+            <li class="cartUser">
+                <img src="{{asset(env('THEME')).'/images/icons/for_button/cart.png'}}">
+                <a style="display: inline-block" href="{{route('cart')}}">Корзина</a>
+                <span>(пусто)</span>
+            </li>
         </ul>
-
-
     </div>
     @endif
 

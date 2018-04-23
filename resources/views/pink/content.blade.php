@@ -13,6 +13,7 @@
 
 
                 @if($articles->isNotEmpty())
+                        @if($articles->get($category->id)->isNotEmpty())
                         @foreach($articles->get($category->id) as $article)
 
                             <div class="portfolio-projects" >
@@ -29,6 +30,9 @@
                             </div>
 
                          @endforeach
+                            @else
+                            <h5>Нет товара категории: {{$category->title}}</h5>
+                        @endif
                             <div class="clear"></div>
 
                     @if($sales->has($category->id))

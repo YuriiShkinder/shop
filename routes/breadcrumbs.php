@@ -29,6 +29,11 @@ Breadcrumbs::register('office', function ($breadcrumbs,$user) {
     $breadcrumbs->push('Личный кабинет', route('office',$user->login));
 });
 
+Breadcrumbs::register('cart', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Корзина', route('cart'));
+});
+
 Breadcrumbs::register('userEdit', function ($breadcrumbs,$user) {
 
     $breadcrumbs->parent('office',$user);

@@ -1004,7 +1004,7 @@ right: -20%;
 }
 .office{
     width: 150px;
-margin:0 !important;
+    margin:0 !important;
     padding:  0!important;
     position: absolute!important;
     right: 0;
@@ -1021,4 +1021,15 @@ margin:0 !important;
     position: relative!important;
     top: 0!important;
     left: 0!important;
+}
+.cartUser{
+
+    width: 150px;
+    margin:0 !important;
+    padding:  0!important;
+    position: absolute!important;
+    right: 15%;
+    background: #b2b2b2;
+    border-radius: 5px;
+
 }
