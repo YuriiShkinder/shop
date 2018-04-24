@@ -46,15 +46,29 @@
         <h3 id="comments-title">
             <span>{{count($article->comments)}}</span> comments
         </h3>
-        @if(count($article->comments)> 0)
+        <div style="text-align: right" >
+        <a class="btn btn-black" href="{{route('filterComent',['article'=>$article->id,'filter'=>'1'])}}">
+            Рекомендую
+        </a>
+        <a class="btn btn-black" href="{{route('filterComent',['article'=>$article->id,'filter'=>'0'])}}">
+            Не рекомендую
+        </a>
+            @if(isset($filter))
+            <a class="btn btn-black" href="{{route('articles.show',['article'=>$article->id])}}">
+                Сбросить фильтр
+            </a>
+                @endif
+        </div>
+        @if(isset($comments) && count($comments)> 0)
 
-        @set($com,$article->comments->groupBy('parent_id'))
+
+@set($com,$comments)
         <ol class="commentlist group">
-            @foreach($com as $k=>$comments)
+            @foreach($comments as $k=>$comment)
                 @if($k!==0)
                     @break
                 @endif
-                @include(env('THEME').'.comment',['items'=>$comments])
+                @include(env('THEME').'.comment',['items'=>$comment])
             @endforeach
 
         </ol>
@@ -82,9 +96,16 @@
                     <input id="comment_parent" type="hidden" name="comment_parent" value="0">
                     {{csrf_field()}}
 
+                <div class="form-check-input" >
+                    <input checked type="checkbox" class="form-check-input" id="exampleCheck1" name="prompt">
+                    <label class="form-check-label" for="exampleCheck1">Рекомендую</label>
+                </div>
                     <input name="submit" type="submit" id="submit" value="Post Comment" />
                 </p>
+
+
             </form>
+
         </div>
         <!-- #respond -->
     </div>

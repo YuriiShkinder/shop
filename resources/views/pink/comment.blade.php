@@ -6,7 +6,6 @@
     <div id="comment-{{$item->id}}" class="comment-container">
         <div class="comment-author vcard">
 
-            @set($hash,isset($item->email) ? md5($item->email) : md5($item->user->email))
             <img alt="" src="{{$item->user->img}}" class="avatar" height="75" width="75" />
             <cite class="fn">{{$item->user->name or $item->name}}</cite>
         </div>
@@ -21,6 +20,17 @@
             </div>
             <div class="comment-body">
                 <p>{{$item->text}}</p>
+            </div>
+            <div >
+                <button url="{{route('commentLike',['type'=>'dislike','comment'=>$item->id])}}" class="dislike" style="margin-right: 10px"  >-{{$item->dislike}}</button>
+                <button url="{{route('commentLike',['type'=>'like','comment'=>$item->id])}}" class="like"  >+{{$item->like}}</button>
+            </div>
+            <div>
+               @if($item->prompt)
+                   Рекомендую
+                   @else
+                    Нерекомендую
+                   @endif
             </div>
             <div class="reply group">
                 <a class="comment-reply-link" href="#respond" onclick="return addComment.moveForm(&quot;comment-{{$item->id}}&quot;, &quot;{{$item->id}}&quot;, &quot;respond&quot;, &quot;{{$item->article->id}}&quot;)">Reply</a>

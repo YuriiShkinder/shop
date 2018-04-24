@@ -3,12 +3,15 @@
 
 Route::resource('/','IndexController',['only'=>['index'],'names'=>['index'=>'home']]);
 Route::post('/ajax',['uses'=>'IndexController@ajax','as'=>'ajax']);
+
 Route::resource('/categories','CategoryController',['only'=>['show'],'parameters'=>['categories'=>'alias']]);
 Route::get('/categories/{categories}/{down}',['uses'=>'CategoryController@down','as'=>'down']);
 
 Route::resource('/articles','ArticleController',['only'=>['show']]);
+Route::get('/article/{article}/{filter}',['uses'=>'ArticleController@filterComent','as'=>'filterComent']);
 
 Route::resource('comment','CommentController',['only'=>['store']]);
+Route::post('/typeLike/{type}/{comment}',['uses'=>'CommentController@commentLike','as'=>'commentLike']);
 
 Route::get('login',['uses'=>'Auth\AuthController@showLoginForm'])->name('login');
 

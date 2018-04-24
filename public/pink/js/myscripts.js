@@ -41,6 +41,9 @@ jQuery(document).ready(function($) {
                             }
                             $('#cancel-comment-reply-link').click();
                         });
+                    }else {
+                        $('.wrap_result').append('<br/><strong>Сохранино .Ваш комментарий на обработке</strong>').delay(2000).fadeOut(500);
+
                     }
 
                 },
@@ -59,6 +62,39 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function ($) {
 
+function like(likes,dislike,url,str){
+    $.ajax({
+        url: url,
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        type: 'POST',
+        data: {
+            str: str
+        },
+        success: function (msg) {
+            likes.text('+'+msg.like);
+            dislike.text('-'+msg.dislike);
+        }
+    })
+}
+    $('.like').click(function () {
+        url=$(this).attr('url');
+        likes=$(this);
+        dislike=likes.siblings('.dislike');
+        str='like';
+        like(likes,dislike,url,str);
+    })
+
+    $('.dislike').click(function () {
+        url=$(this).attr('url');
+        dislikes=$(this);
+        likes=dislikes.siblings('.like');
+        console.log(dislike);
+        str='dislike';
+        like(likes,dislike,url,str);
+    })
+
+
+
 
     $('#pagination').click(function () {
         $('.subPagin').slideToggle();
@@ -71,7 +107,6 @@ jQuery(document).ready(function ($) {
         if(str.length>=2) {
             url = $(this).parent('form').attr('action');
 
-            $('.list').slideDown();
             $.ajax({
                 url: url,
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},

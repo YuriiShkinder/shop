@@ -10,8 +10,14 @@ Breadcrumbs::register('categories.show', function ($breadcrumbs,$category) {
 });
 Breadcrumbs::register('articles.show', function ($breadcrumbs,$article) {
 
+
     $breadcrumbs->parent('categories.show',$article->categories->first()->alias);
     $breadcrumbs->push($article->title, route('articles.show',$article->id));
+});
+Breadcrumbs::register('filterComent', function ($breadcrumbs,$article,$filter) {
+
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('filter', route('filterComent',['article'=>$article->id,'filter'=>$filter]));
 });
 Breadcrumbs::register('down', function ($breadcrumbs,$cat,$down) {
     $breadcrumbs->parent('home');
