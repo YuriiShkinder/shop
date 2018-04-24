@@ -35,6 +35,7 @@
     <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery-ui.js"></script>
     <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/bootstrap-filestyle.min.js"></script>
+    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/myscripts.js"></script>
 
 
 </head>

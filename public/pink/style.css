@@ -1033,3 +1033,15 @@ right: -20%;
     border-radius: 5px;
 
 }
+
+.subPagin{
+    display: none;
+    position: relative;
+    top: -10px;
+    left: 35%;
+    border: #0b0000 solid;
+    padding: 10px;
+    width: 300px;
+    z-index: 1000;
+    background-color: rgba(0,0,0,.5);
+}

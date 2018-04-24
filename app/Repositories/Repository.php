@@ -6,7 +6,7 @@ use Config;
 abstract class Repository{
     public $model;
 
-    public function get($select='*',$take=false,$pagination=false,$where=false){
+    public function get($select='*',$take=false,$load=false,$pagination=false,$where=false){
         $builder=$this->model->select($select);
 
         if($take){
@@ -14,6 +14,9 @@ abstract class Repository{
         }
         if($where){
             $builder->where($where[0],$where[1]);
+        }
+        if($load){
+            $builder->with('categories');
         }
 
         if($pagination){

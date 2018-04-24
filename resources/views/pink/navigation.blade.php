@@ -24,6 +24,14 @@
                 <a style="display: inline-block" href="{{route('cart')}}">Корзина</a>
                 <span>(пусто)</span>
             </li>
+            <li id="searchLi">
+            <form style="height: 20px; position: absolute" class="form-inline " action="{{route('ajax')}}" method="post">
+                @csrf
+                <input id="search"  class="form-control mr-sm-2" type="text" placeholder="Поиск товара или категории">
+
+            </form>
+
+            </li>
         </ul>
     </div>
     @endif

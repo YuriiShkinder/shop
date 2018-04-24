@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Category;
 use App\Menu;
 use App\Repositories\ArticlesRepository;
@@ -12,6 +13,7 @@ use App\Second_Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use DB;
+use Response;
 class IndexController extends SiteController
 {
     public function __construct( ArticlesRepository $a_rep,CategoriesReporitory $c_rep,CommentsRepository $comments)
@@ -117,6 +119,22 @@ return $collection;
         }
 
         return $sliders;
+    }
+
+    public function ajax(Request $request){
+
+
+        if($request->ajax()){
+            $str=$request->input('str');
+            $article = Article::where('title','like',"%".$str."%")->get();
+            $category= Category::where('title','like',"%".$str."%")->get();
+
+            $content= view(env('THEME').'.search')->with(['categories'=>$category,'articles'=>$article])->render();
+
+            return Response::json(['success'=>true,'content'=>$content]);
+        }
+
+        return Response::json(['success'=>false]);
     }
 
 }

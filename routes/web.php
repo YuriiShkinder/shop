@@ -2,7 +2,7 @@
 
 
 Route::resource('/','IndexController',['only'=>['index'],'names'=>['index'=>'home']]);
-
+Route::post('/ajax',['uses'=>'IndexController@ajax','as'=>'ajax']);
 Route::resource('/categories','CategoryController',['only'=>['show'],'parameters'=>['categories'=>'alias']]);
 Route::get('/categories/{categories}/{down}',['uses'=>'CategoryController@down','as'=>'down']);
 

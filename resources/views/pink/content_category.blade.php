@@ -47,22 +47,29 @@
 
                 <div class="general-pagination group">
 
-                        @if( $articles->lastPage() > 1)
+                        @if( $articles->lastPage() >= 3)
                         <ul class="pagination">
 
                             @if ($articles->currentPage() !== 1)
                                 <a  href="{{ $articles->url(($articles->currentPage()-1)) }}"><img src="{{asset(env('THEME').'/images/icons/for_button/arrow-left.png')}}"></a>
                             @endif
-                            @for ($i = 1; $i <= $articles->lastPage(); $i++)
 
-                                @if ($articles->currentPage() == $i)
-                                    <a class="selected disabled">{{ $i }}</a>
+                                @if ($articles->currentPage() == 1)
+                                    <a class="selected disabled">{{ 1 }}</a>
                                 @else
-                                    <a href="{{ $articles->url($i) }}">{{ $i }}</a>
+                                    <a href="{{ $articles->url(1) }}">1</a>
+                                @endif
+
+                            <a id="pagination">...</a>
+
+
+                                @if ($articles->currentPage() == $articles->lastPage())
+                                    <a class="selected disabled">{{ $articles->lastPage() }}</a>
+                                @else
+                                    <a href="{{ $articles->url( $articles->lastPage()) }}">{{ $articles->lastPage()}}</a>
                                 @endif
 
 
-                            @endfor
 
                             @if ($articles->currentPage() !== $articles->lastPage())
 
@@ -70,6 +77,46 @@
                             @endif
 
                         </ul>
+                        <ul class="subPagin" >
+                            @for ($i = 2; $i < $articles->lastPage(); $i++)
+
+                                @if ($articles->currentPage() == $i)
+                                    <a class="selected disabled">{{ $i }}</a>
+                                @else
+                                    <a href="{{ $articles->url($i) }}">{{ $i }}</a>
+                                @endif
+
+                            @endfor
+
+
+                        </ul>
+                            @elseif($articles->lastPage() >1 && $articles->lastPage() < 3)
+
+                        <ul class="pagination">
+
+                            @if ($articles->currentPage() !== 1)
+                                <a  href="{{ $articles->url(($articles->currentPage()-1)) }}"><img src="{{asset(env('THEME').'/images/icons/for_button/arrow-left.png')}}"></a>
+                            @endif
+                            <ul style="display: none">
+                                @for ($i = 1; $i <= $articles->lastPage(); $i++)
+
+                                    @if ($articles->currentPage() == $i)
+                                        <a class="selected disabled">{{ $i }}</a>
+                                    @else
+                                        <a href="{{ $articles->url($i) }}">{{ $i }}</a>
+                                    @endif
+
+                                @endfor
+
+                            </ul>
+
+                            @if ($articles->currentPage() !== $articles->lastPage())
+
+                                <a href="{{ $articles->url($articles->currentPage()+1) }}" ><img src="{{asset(env('THEME').'/images/icons/for_button/arrow.png')}}"></a>
+                            @endif
+
+                        </ul>
+
                      @endif
 
 

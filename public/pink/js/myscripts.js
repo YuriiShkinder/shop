@@ -59,6 +59,49 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function ($) {
 
+
+    $('#pagination').click(function () {
+        $('.subPagin').slideToggle();
+    })
+
+
+    $('#search').keyup(function (e) {
+        var str=$(this).val();
+
+        if(str.length>=2) {
+            url = $(this).parent('form').attr('action');
+
+            $('.list').slideDown();
+            $.ajax({
+                url: url,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: 'POST',
+                data: {
+                    str: str
+                },
+
+                success: function (msg) {
+                    if(msg.success){
+                        $('#searchLi').children('ul').detach();
+                        $('#searchLi').append(msg.content);
+                    }
+                }
+            })
+        }else {
+            $('#searchLi').children('ul').detach();
+
+        }
+    })
+    $(document).click(function (e){
+        var div = $("#searchLi ul");
+            $('#search').val('');
+            div.hide();
+
+    });
+
+
+
+
     $('.cartOrder').click(function (e) {
         e.preventDefault();
         val= parseInt($('.cartUser').children('span').first().text()) ? parseInt($('.cartUser').children('span').first().text()) : 0 ;
@@ -78,9 +121,9 @@ jQuery(document).ready(function ($) {
                     $('.wrap_result').delay(2000).fadeOut(200);
 
                 } else if (html.success) {
-                    console.log(222);
+
                     $('.wrap_result').children().detach();
-                    // $('.wrap_result').children('strong').detach('strong');
+
                     $('.wrap_result').css('display','block').append('<br/><strong>Товар добавлено в корзину</strong>').delay(2000).fadeOut(500);
 
                 }
