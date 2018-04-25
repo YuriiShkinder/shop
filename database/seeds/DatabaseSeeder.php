@@ -43,12 +43,12 @@ class DatabaseSeeder extends Seeder
 
     public function getCatArt(){
         $this->truncate('categories_articles');
-        $articles=\App\Article::all();
-        $cat=\App\Category::all()->count();
+        $articles=\App\Article::all()->random()->id;
+        $cat=\App\Category::all()->random()->id;
         foreach ($articles as $article){
             DB::table('categories_articles')->insert([
-                'category_id'=>rand(1,$cat),
-                'article_id'=>$article->id
+                'category_id'=>$cat,
+                'article_id'=>$articles
             ]);
         }
 
