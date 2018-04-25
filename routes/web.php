@@ -19,7 +19,11 @@ Route::post('login',['uses'=>'Auth\AuthController@login']);
 
 Route::get('logout',['uses'=>'Auth\AuthController@logout']);
 
-Route::match(['get','post'],'cart',['uses'=>'CartController@index'])->name('cart');
+//Route::match(['get','post'],'cart',['uses'=>'CartController@index'])->name('cart');
+Route::resource('/cart', 'CartController');
+Route::get('/cart/add-item/{id}', 'CartController@addItem')->name('cart.addItem');
+Route::get('/showForm', 'CartController@showForm')->name('cart.showForm');
+Route::post('/showForm', 'CartController@createOrder')->name('cart.createOrder');
 
 Route::group(['prefix' => 'office','middleware'=> 'auth'],function (){
 

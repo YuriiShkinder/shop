@@ -21,8 +21,8 @@
             </li>
             <li class="cartUser">
                 <img src="{{asset(env('THEME')).'/images/icons/for_button/cart.png'}}">
-                <a style="display: inline-block" href="{{route('cart')}}">Корзина</a>
-                <span>(пусто)</span>
+                <a style="display: inline-block" href="{{route('cart.index')}}">Корзина</a>
+                <span>{{Cart::count()}}</span>
             </li>
             <li id="searchLi">
             <form style="height: 20px; position: absolute" class="form-inline " action="{{route('ajax')}}" method="post">

@@ -62,6 +62,12 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function ($) {
 
+    $('#closeOverlay').click(function () {
+        $('#overlay').hide();
+    })
+
+
+
 function like(likes,dislike,url,str){
     $.ajax({
         url: url,
@@ -137,39 +143,39 @@ function like(likes,dislike,url,str){
 
 
 
-    $('.cartOrder').click(function (e) {
-        e.preventDefault();
-        val= parseInt($('.cartUser').children('span').first().text()) ? parseInt($('.cartUser').children('span').first().text()) : 0 ;
-        val++;
-        $('.cartUser').children('span').first().text(val);
-        data={article_id: $(this).attr('id'),count:val};
-
-        $.ajax({
-            url:$(this).attr('url'),
-            data: data,
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: 'POST',
-            datatype: 'JSON',
-            success: function (html) {
-                if (html.error) {
-                    $('.wrap_result').css('color','red').append('<br><strong>Ошибка:</strong>'+ html.error.join('<br>'));
-                    $('.wrap_result').delay(2000).fadeOut(200);
-
-                } else if (html.success) {
-
-                    $('.wrap_result').children().detach();
-
-                    $('.wrap_result').css('display','block').append('<br/><strong>Товар добавлено в корзину</strong>').delay(2000).fadeOut(500);
-
-                }
-            },
-            error: function () {
-                $('.wrap_result').css('color','red').append('<br><strong>Ошибка:</strong>');
-                $('.wrap_result').delay(2000).fadeOut(500);
-            }
-        });
-
-    })
+    // $('.cartOrder').click(function (e) {
+    //     e.preventDefault();
+    //     val= parseInt($('.cartUser').children('span').first().text()) ? parseInt($('.cartUser').children('span').first().text()) : 0 ;
+    //     val++;
+    //     $('.cartUser').children('span').first().text(val);
+    //     data={article_id: $(this).attr('id'),count:val};
+    //
+    //     $.ajax({
+    //         url:$(this).attr('url'),
+    //         data: data,
+    //         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //         type: 'POST',
+    //         datatype: 'JSON',
+    //         success: function (html) {
+    //             if (html.error) {
+    //                 $('.wrap_result').css('color','red').append('<br><strong>Ошибка:</strong>'+ html.error.join('<br>'));
+    //                 $('.wrap_result').delay(2000).fadeOut(200);
+    //
+    //             } else if (html.success) {
+    //
+    //                 $('.wrap_result').children().detach();
+    //
+    //                 $('.wrap_result').css('display','block').append('<br/><strong>Товар добавлено в корзину</strong>').delay(2000).fadeOut(500);
+    //
+    //             }
+    //         },
+    //         error: function () {
+    //             $('.wrap_result').css('color','red').append('<br><strong>Ошибка:</strong>');
+    //             $('.wrap_result').delay(2000).fadeOut(500);
+    //         }
+    //     });
+    //
+    // })
 // пароль
     $('#formPass').on('click','#resetPass',function (e) {
         e.preventDefault();
@@ -210,11 +216,6 @@ function like(likes,dislike,url,str){
 });
 
 
-
-
-
-
-
 jQuery(document).ready(function($) {
     $('#go').click( function(event){
         event.preventDefault();
@@ -227,8 +228,7 @@ jQuery(document).ready(function($) {
     });
 
     $('#modal_close, #overlay').click( function(){
-        $('#modal_form')
-            .animate({opacity: 0, top: '45%'}, 200,
+        $('#modal_form').animate({opacity: 0, top: '45%'}, 200,
                 function(){ // пoсле aнимaции
                     $(this).css('display', 'none');
                     $('#overlay').fadeOut(400);

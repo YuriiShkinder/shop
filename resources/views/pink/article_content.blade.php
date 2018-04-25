@@ -19,7 +19,7 @@
         </div>
         <!-- post meta -->
         <div class="meta group">
-            <p class="categories"><span>  price {{$article->price}} $ {!! Html::link('#','В корзину',['id'=>$article->id,'class' => 'btn btn-the-salmon-dance-3 cartOrder ','style'=>'padding:5px 20px;','url'=>route('cart')]) !!}</span></p>
+            <p class="categories"><span>  price {{$article->price}} $ {!! Html::link(route('cart.addItem',$article->id),'В корзину',['id'=>$article->id,'class' => 'btn btn-the-salmon-dance-3 cartOrder ','style'=>'padding:5px 20px;']) !!}</span></p>
             <p class="comments "><span><a href="#comments" title="Comment on This is the title of the first article. Enjoy it.">{{count($article->comments) ? count($article->comments) : 0}}Comments</a></span></p>
 
         </div>

@@ -98,7 +98,7 @@
                             <td><img src="{{$order->article->img->mini}}"></td>
                             <td>{{$order->count}}</td>
                             <td>{{$order->price}} $</td>
-                            <td>{{$order->created_at}}</td>
+                            <td>{{isset($order->created_at) ?$order->created_at : ''}}</td>
                         </tr>
                         @endforeach
                         </tbody>

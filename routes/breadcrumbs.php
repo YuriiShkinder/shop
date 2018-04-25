@@ -35,9 +35,14 @@ Breadcrumbs::register('office', function ($breadcrumbs,$user) {
     $breadcrumbs->push('Личный кабинет', route('office',$user->login));
 });
 
-Breadcrumbs::register('cart', function ($breadcrumbs) {
+Breadcrumbs::register('cart.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Корзина', route('cart'));
+    $breadcrumbs->push('Корзина', route('cart.index'));
+});
+
+Breadcrumbs::register('cart.showForm', function ($breadcrumbs) {
+    $breadcrumbs->parent('cart.index');
+    $breadcrumbs->push('Оформление заказа', route('cart.showForm'));
 });
 
 Breadcrumbs::register('userEdit', function ($breadcrumbs,$user) {
