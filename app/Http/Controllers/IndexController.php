@@ -33,13 +33,14 @@ class IndexController extends SiteController
      */
     public function index()
     {
+        dd(env('THEME'));
 
         $this->getCategories();
         $this->title='Home';
         $sliderItem=$this->getSliders();
         $categories=$this->getCategories();
         $comments=$this->getComments();
-dd(env('THEME'));
+
         $content=view(env('THEME').'.content')->with([
             'sales'=>$categories->get('sale'),
             'categories'=>$categories->get('categories'),
