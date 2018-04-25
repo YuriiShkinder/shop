@@ -119,7 +119,8 @@
                 <div class="clearer"></div>
 
                 <hr />
-                {{ Breadcrumbs::render() }}
+
+               {{ Breadcrumbs::render() }}
                 <hr />
                 <!-- START MAIN NAVIGATION -->
             @yield('navigation')

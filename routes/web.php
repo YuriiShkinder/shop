@@ -43,7 +43,12 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'],function() {
 
     Route::match(['get','put','delete'],'/categories/{categories}/{down}/edit',['uses'=>'Admin\CategoriesController@down','as'=>'adminDown']);
 
-    Route::resource('/comments','Admin\CommentsController',['as'=>'admin']);
+    Route::resource('/comments','Admin\CommentsController',['only'=>'index','as'=>'admin']);
+    Route::get('/comments/show/Article', 'Admin\CommentsController@showArticle')->name('showArticle');
+    Route::match(['get','post'],'/comments/show/Comments/{article}', 'Admin\CommentsController@showComments')->name('showComments');
+    Route::match(['get','post'],'/comments/check', 'Admin\CommentsController@checkComments')->name('checkComments');
+
+
 
     Route::resource('/styles','Admin\StylesController',['only'=>['index','update','edit'],'as'=>'admin']);
 

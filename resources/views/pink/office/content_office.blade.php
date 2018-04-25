@@ -22,7 +22,7 @@
         </div>
     @endif
 
-    <div id="modal_form">
+    <div style="margin-top: 0" id="modal_form">
         <span id="modal_close">X</span>
         {!! Form::open(array('route' => array('officePass', $user->login),'method'=>'post','class'=>'resetPass','id'=>'formPass')) !!}
 

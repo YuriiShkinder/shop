@@ -50,4 +50,8 @@ Breadcrumbs::register('userEdit', function ($breadcrumbs,$user) {
     $breadcrumbs->parent('office',$user);
     $breadcrumbs->push('Изминения личных даных', route('userEdit',$user->login));
 });
+Breadcrumbs::register('errors.404', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Page Not Found');
+});
 

@@ -5,8 +5,6 @@
 	{!! $navigation !!}
 @endsection
 
- 
-
  @section('content')
  <div id="content-index" class="content group">
 				            <img class="error-404-image group" src="{{ asset(env('THEME')) }}/images/features/404.png" title="Error 404" alt="404" />
