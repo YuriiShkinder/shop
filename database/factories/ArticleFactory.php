@@ -21,6 +21,7 @@ $factory->define(App\Article::class, function (Faker $faker) {
 
 
     return [
+        'id'=>$faker->idNumber,
         'title' =>$faker->text(20),
         'desc'=>$faker->text(500),
         'text'=>$faker->text(1000),
