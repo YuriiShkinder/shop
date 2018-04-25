@@ -2,7 +2,7 @@
 @if($menu)
     <div class="menu classic">
         <ul  id="nav" class="menu">
-            @include(env('THEME').'.custemMenuItems',['items'=>$menu->roots()])
+            @include('pink'.'.custemMenuItems',['items'=>$menu->roots()])
             <li class="office" >
                 @guest
                 <p >{!! Html::link(route('login'),'Login',['class' => 'btn btn-the-salmon-dance-3 ','style'=>'padding:5px 20px; font-size:14px; text-align:center;']) !!}</p>
@@ -20,7 +20,7 @@
                     @endguest
             </li>
             <li class="cartUser">
-                <img src="{{asset(env('THEME')).'/images/icons/for_button/cart.png'}}">
+                <img src="{{asset('pink').'/images/icons/for_button/cart.png'}}">
                 <a style="display: inline-block" href="{{route('cart.index')}}">Корзина</a>
                 <span>{{Cart::count()}}</span>
             </li>

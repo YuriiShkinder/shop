@@ -48,7 +48,7 @@ class AuthController extends Controller
 
         $this->middleware('guest')->except('logout');
 
-        $this->loginView = env('THEME').'.login';
+        $this->loginView = 'pink'.'.login';
     }
 
     public function redirectPath()

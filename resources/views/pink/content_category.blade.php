@@ -51,7 +51,7 @@
                         <ul class="pagination">
 
                             @if ($articles->currentPage() !== 1)
-                                <a  href="{{ $articles->url(($articles->currentPage()-1)) }}"><img src="{{asset(env('THEME').'/images/icons/for_button/arrow-left.png')}}"></a>
+                                <a  href="{{ $articles->url(($articles->currentPage()-1)) }}"><img src="{{asset('pink'.'/images/icons/for_button/arrow-left.png')}}"></a>
                             @endif
 
                                 @if ($articles->currentPage() == 1)
@@ -73,7 +73,7 @@
 
                             @if ($articles->currentPage() !== $articles->lastPage())
 
-                                <a href="{{ $articles->url($articles->currentPage()+1) }}" ><img src="{{asset(env('THEME').'/images/icons/for_button/arrow.png')}}"></a>
+                                <a href="{{ $articles->url($articles->currentPage()+1) }}" ><img src="{{asset('pink'.'/images/icons/for_button/arrow.png')}}"></a>
                             @endif
 
                         </ul>
@@ -95,7 +95,7 @@
                         <ul class="pagination">
 
                             @if ($articles->currentPage() !== 1)
-                                <a  href="{{ $articles->url(($articles->currentPage()-1)) }}"><img src="{{asset(env('THEME').'/images/icons/for_button/arrow-left.png')}}"></a>
+                                <a  href="{{ $articles->url(($articles->currentPage()-1)) }}"><img src="{{asset('pink'.'/images/icons/for_button/arrow-left.png')}}"></a>
                             @endif
                             <ul style="display: none">
                                 @for ($i = 1; $i <= $articles->lastPage(); $i++)
@@ -112,7 +112,7 @@
 
                             @if ($articles->currentPage() !== $articles->lastPage())
 
-                                <a href="{{ $articles->url($articles->currentPage()+1) }}" ><img src="{{asset(env('THEME').'/images/icons/for_button/arrow.png')}}"></a>
+                                <a href="{{ $articles->url($articles->currentPage()+1) }}" ><img src="{{asset('pink'.'/images/icons/for_button/arrow.png')}}"></a>
                             @endif
 
                         </ul>

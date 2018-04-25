@@ -36,13 +36,13 @@ class ArticlesRepository extends Repository
                 $obj->path = $str . '.jpg';
 
                 $img = \Image::make($image);
-                $img->fit(1024, 768)->save(public_path() . '/' . env('THEME') . '/images/articles/' . $obj->path);
-                $img->fit(600, 400)->save(public_path() . '/' . env('THEME') . '/images/articles/' . $obj->max);
-                $img->fit(55, 55)->save(public_path() . '/' . env('THEME') . '/images/articles/' . $obj->mini);
+                $img->fit(1024, 768)->save(public_path() . '/' . 'pink' . '/images/articles/' . $obj->path);
+                $img->fit(600, 400)->save(public_path() . '/' . 'pink' . '/images/articles/' . $obj->max);
+                $img->fit(55, 55)->save(public_path() . '/' . 'pink' . '/images/articles/' . $obj->mini);
 
-                $obj->mini=asset(env('THEME')).'/images/articles/'. $obj->mini;
-                $obj->max=asset(env('THEME')).'/images/articles/'. $obj->max;
-                $obj->path=asset(env('THEME')).'/images/articles/'. $obj->path;
+                $obj->mini=asset('pink').'/images/articles/'. $obj->mini;
+                $obj->max=asset('pink').'/images/articles/'. $obj->max;
+                $obj->path=asset('pink').'/images/articles/'. $obj->path;
 
                 $data['img'] = json_encode($obj);
 
@@ -85,13 +85,13 @@ class ArticlesRepository extends Repository
                 }
 
                 $img = \Image::make($image);
-                $img->fit(1024, 768)->save(public_path() . '/' . env('THEME') . '/images/articles/' . $obj->path);
-                $img->fit(600, 400)->save(public_path() . '/' . env('THEME') . '/images/articles/' . $obj->max);
-                $img->fit(55, 55)->save(public_path() . '/' . env('THEME') . '/images/articles/' . $obj->mini);
+                $img->fit(1024, 768)->save(public_path() . '/' . 'pink' . '/images/articles/' . $obj->path);
+                $img->fit(600, 400)->save(public_path() . '/' . 'pink' . '/images/articles/' . $obj->max);
+                $img->fit(55, 55)->save(public_path() . '/' . 'pink' . '/images/articles/' . $obj->mini);
 
-                $obj->mini=asset(env('THEME')).'/images/articles/'. $obj->mini;
-                $obj->max=asset(env('THEME')).'/images/articles/'. $obj->max;
-                $obj->path=asset(env('THEME')).'/images/articles/'. $obj->path;
+                $obj->mini=asset('pink').'/images/articles/'. $obj->mini;
+                $obj->max=asset('pink').'/images/articles/'. $obj->max;
+                $obj->path=asset('pink').'/images/articles/'. $obj->path;
 
                 $data['img'] = json_encode($obj);
 

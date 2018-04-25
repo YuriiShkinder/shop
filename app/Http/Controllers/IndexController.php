@@ -22,7 +22,7 @@ class IndexController extends SiteController
         $this->c_rep=$c_rep;
         $this->a_rep=$a_rep;
         parent::__construct(new MenusRepository(new Menu()));
-        $this->template=env('THEME').'.index';
+        $this->template='pink'.'.index';
 
     }
 
@@ -33,22 +33,20 @@ class IndexController extends SiteController
      */
     public function index()
     {
-        dd(env('THEME'));
-
         $this->getCategories();
         $this->title='Home';
         $sliderItem=$this->getSliders();
         $categories=$this->getCategories();
         $comments=$this->getComments();
 
-        $content=view(env('THEME').'.content')->with([
+        $content=view('pink'.'.content')->with([
             'sales'=>$categories->get('sale'),
             'categories'=>$categories->get('categories'),
             'articles'=>$categories->get('articles'),
             'comments'=>$comments
         ])->render();
         $this->vars=array_add($this->vars,'content',$content);
-        $sliders=view(env('THEME').'.slider')->with('sliders',$sliderItem)->render();
+        $sliders=view('pink'.'.slider')->with('sliders',$sliderItem)->render();
         $this->vars=array_add($this->vars,'sliders',$sliders);
 
         return $this->renderOutput();
@@ -130,7 +128,7 @@ return $collection;
             $article = Article::where('title','like',"%".$str."%")->get();
             $category= Category::where('title','like',"%".$str."%")->get();
 
-            $content= view(env('THEME').'.search')->with(['categories'=>$category,'articles'=>$article])->render();
+            $content= view('pink'.'.search')->with(['categories'=>$category,'articles'=>$article])->render();
 
             return Response::json(['success'=>true,'content'=>$content]);
         }

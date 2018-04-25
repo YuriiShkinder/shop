@@ -30,10 +30,10 @@ class SiteController extends Controller
     {
 
         $menu=$this->getMenu();
-        $navigation = view(env('THEME') . '.navigation')->with('menu',$menu)->render();
+        $navigation = view('pink' . '.navigation')->with('menu',$menu)->render();
         $this->vars = array_add($this->vars, 'navigation', $navigation);
         $style=Style::all()->last();
-        $footer=view(env('THEME').'.footer')->render();
+        $footer=view('pink'.'.footer')->render();
 
         $this->vars=array_add($this->vars,'footer',$footer);
         $this->vars=array_add($this->vars,'style',$style);

@@ -1,4 +1,4 @@
-@extends(env('THEME').'.layouts.admin')
+@extends('pink'.'.layouts.admin')
 
 @section('navigation')
     {!! $navigation !!}

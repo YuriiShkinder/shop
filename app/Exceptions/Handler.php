@@ -56,11 +56,11 @@ class Handler extends ExceptionHandler
 
                     $obj = new SiteController(new MenusRepository(new Menu));
 
-                    $navigation = view(env('THEME').'.navigation')->with('menu',$obj->getMenu())->render();
+                    $navigation = view('pink'.'.navigation')->with('menu',$obj->getMenu())->render();
 
                     \Log::alert('Страница не найдена - '. $request->url());
 
-                    return response()->view(env('THEME').'.404',['bar' => 'no','title' =>'Страница не найдена','navigation'=>$navigation]);
+                    return response()->view('pink'.'.404',['bar' => 'no','title' =>'Страница не найдена','navigation'=>$navigation]);
                 case '403':
                     return response('У вас нет прав доступа до админпанели ');
             }

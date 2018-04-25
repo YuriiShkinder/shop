@@ -13,7 +13,7 @@ class CategoriesController extends AdminController
     public function __construct(CategoriesReporitory $c_rep)
     {
         $this->c_rep=$c_rep;
-        $this->template=env('THEME').'/admin/category';
+        $this->template='pink'.'/admin/category';
     }
 
     /**
@@ -25,7 +25,7 @@ class CategoriesController extends AdminController
     {
         $this->title='Категории';
          $category=$this->c_rep->get(['id','alias','title'])->load('down');
-         $content=view(env('THEME').'.admin.category_content')->with('categories',$category)->render();
+         $content=view('pink'.'.admin.category_content')->with('categories',$category)->render();
          $this->vars=array_add($this->vars,'content',$content);
          return $this->renderOutput();
     }
@@ -44,7 +44,7 @@ class CategoriesController extends AdminController
           return $returnCat;
         },['0' => 'Родительский пункт категории']);
 
-        $content=view(env('THEME').'.admin.category_create')->with('categories',$categories)->render();
+        $content=view('pink'.'.admin.category_create')->with('categories',$categories)->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
 
@@ -122,7 +122,7 @@ class CategoriesController extends AdminController
             return $returnCat;
         },['0' => 'Родительский пункт категории']);
 
-        $content=view(env('THEME').'.admin.category_create')->with(['categories'=>$categories,'category'=>$category])->render();
+        $content=view('pink'.'.admin.category_create')->with(['categories'=>$categories,'category'=>$category])->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
 
@@ -218,7 +218,7 @@ class CategoriesController extends AdminController
             return $returnCat;
         },['0' => 'Родительский пункт категории']);
 
-        $content=view(env('THEME').'.admin.down')->with(['categories'=>$categories,'category'=>$category,'down'=>$down])->render();
+        $content=view('pink'.'.admin.down')->with(['categories'=>$categories,'category'=>$category,'down'=>$down])->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
 

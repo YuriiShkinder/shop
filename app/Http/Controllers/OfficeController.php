@@ -20,7 +20,7 @@ class OfficeController extends SiteController
         $this->u_rep=$u_rep;
         parent::__construct(new MenusRepository(new Menu()) );
         $this->title='Личный кабинет';
-        $this->template=env('THEME').'/office/office';
+        $this->template='pink'.'/office/office';
     }
 
     public  function index(User $user){
@@ -34,7 +34,7 @@ class OfficeController extends SiteController
             return $item;
         });
 
-        $content=view(env('THEME').'/office/content_office')->with('user',$user)->render();
+        $content=view('pink'.'/office/content_office')->with('user',$user)->render();
 
         $this->vars=array_add($this->vars,'content',$content);
 
@@ -90,7 +90,7 @@ class OfficeController extends SiteController
             return redirect(route('office',['user'=>$request->input('login')]))->with($result);
         }
 
-        $content=view(env('THEME').'/office/edit')->with('user',$user)->render();
+        $content=view('pink'.'/office/edit')->with('user',$user)->render();
 
         $this->vars=array_add($this->vars,'content',$content);
 

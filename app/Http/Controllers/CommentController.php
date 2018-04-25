@@ -54,7 +54,7 @@ class CommentController extends Controller
         $data['name']=(!empty($data['name'])) ? $data['name'] : $comment->user->name;
         $data['img']=$comment->user->img;
 
-        $view_coment=view(env('THEME').'.content_one_comment')->with('data',$data)->render();
+        $view_coment=view('pink'.'.content_one_comment')->with('data',$data)->render();
         if(isset($data['prompt']) && !empty($data['prompt'])){
             return Response::json(['success'=>true,'comment'=>$view_coment,'data'=>$data]);
         }

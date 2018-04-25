@@ -14,7 +14,7 @@ class ArticleController extends AdminController
     public function __construct(ArticlesRepository $a_rep)
     {
         $this->a_rep=$a_rep;
-        $this->template=env('THEME').'.admin.articles';
+        $this->template='pink'.'.admin.articles';
     }
 
     /**
@@ -27,7 +27,7 @@ class ArticleController extends AdminController
         $this->title='Товары';
         $articles=$this->a_rep->get('*',0,1,1);
 
-        $content=view(env('THEME').'.admin.articles_content')->with('articles',$articles)->render();
+        $content=view('pink'.'.admin.articles_content')->with('articles',$articles)->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
     }
@@ -46,7 +46,7 @@ class ArticleController extends AdminController
             return $return;
         });
 
-        $content=view(env('THEME').'.admin.articles_create_content')->with('categories',$categories)->render();
+        $content=view('pink'.'.admin.articles_create_content')->with('categories',$categories)->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
     }
@@ -86,7 +86,7 @@ class ArticleController extends AdminController
         $article->load('categories');
         $article->img=json_decode($article->img);
 
-        $content=view(env('THEME').'.admin.articles_create_content')->with(['article'=>$article,'categories'=>$categories])->render();
+        $content=view('pink'.'.admin.articles_create_content')->with(['article'=>$article,'categories'=>$categories])->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
     }

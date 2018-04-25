@@ -14,7 +14,7 @@ class IndexController extends AdminController
         if(!$auth){
             return redirect()->route('login');
         }
-        $this->template=env('THEME').".admin.index";
+        $this->template='pink'.".admin.index";
 
         if(Gate::denies('VIEW_ADMIN')){
             abort(403);

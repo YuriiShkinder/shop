@@ -42,7 +42,7 @@
                                         <div class="related_project ">
                                             <div class="overlay_a related_img">
                                                 <div class="overlay_wrapper ">
-                                                    <div class="saleArt" style="background: url({{env('THEME').'/images/sale.png' }}) no-repeat center center;background-size: 80px; "></div>
+                                                    <div class="saleArt" style="background: url({{'pink'.'/images/sale.png' }}) no-repeat center center;background-size: 80px; "></div>
                                                     <img style="width: 200px" src="{{json_decode($sale->article->img)->max}}" alt="{{$sale->title}}" title="{{$sale->title}}" />
                                                     <h5>price {{$sale->article->price}}$</h5>
                                                     <h5>sale price {{$sale->article->price-$sale->sale}}$</h5>
@@ -86,7 +86,7 @@
                             <div class="text">
                                 <p class="title">{{str_limit($comment->get('article')->text,50)}}</p>
                                 <p class="post-date"> {{is_object($comment->get('article')->created_at) ? $comment->get('article')->created_at->format('F d, Y  \a\t H:i') : '' }} </p>
-                                <p><span><img style="width: 10px" src="{{asset(env('THEME')).'/images/icons/chat.png'}}"> </span>{{$comment->get('total')}} коментария</p>
+                                <p><span><img style="width: 10px" src="{{asset('pink').'/images/icons/chat.png'}}"> </span>{{$comment->get('total')}} коментария</p>
                             </div>
                         </div>
 

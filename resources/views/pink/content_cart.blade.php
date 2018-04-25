@@ -8,7 +8,7 @@
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td><img src="{{asset(env('THEME').'/images/icons/for_button/remove.png')}}"></td>
+                    <td><img src="{{asset('pink'.'/images/icons/for_button/remove.png')}}"></td>
                 </tr>
 
             </table>

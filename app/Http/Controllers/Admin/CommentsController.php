@@ -14,7 +14,7 @@ class CommentsController extends AdminController
     {
         $this->a_rep=$a_rep;
         $this->com_rep=$com_rep;
-        $this->template=env('THEME').'.admin.comments';
+        $this->template='pink'.'.admin.comments';
     }
 
     /**
@@ -25,7 +25,7 @@ class CommentsController extends AdminController
     public function index()
     {
         $this->title='Комментарии';
-        $content=view(env('THEME').'.admin.comment_menu')->render();
+        $content=view('pink'.'.admin.comment_menu')->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
     }
@@ -34,7 +34,7 @@ class CommentsController extends AdminController
         $articles=$this->a_rep->get('*',0,1,1);
 
         $this->title='Комментарии';
-        $content=view(env('THEME').'.admin.comments_article_content')->with('articles',$articles)->render();
+        $content=view('pink'.'.admin.comments_article_content')->with('articles',$articles)->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
 
@@ -56,7 +56,7 @@ class CommentsController extends AdminController
         }
 
         $this->title='Комментарии '.$article->title ;
-        $content=view(env('THEME').'.admin.comment_content')->with('article',$article)->render();
+        $content=view('pink'.'.admin.comment_content')->with('article',$article)->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
     }
@@ -79,7 +79,7 @@ class CommentsController extends AdminController
          $comments->load('user');
 
         $this->title='Комментарии';
-        $content=view(env('THEME').'.admin.comments_check_content')->with('comments',$comments)->render();
+        $content=view('pink'.'.admin.comments_check_content')->with('comments',$comments)->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
     }

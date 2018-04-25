@@ -12,7 +12,7 @@ class StylesController extends AdminController
 {
     public function __construct()
     {
-        $this->template=env('THEME').'.admin.category';
+        $this->template='pink'.'.admin.category';
     }
 
     /**
@@ -24,7 +24,7 @@ class StylesController extends AdminController
     {
         $this->title='Style';
         $style=Style::all()->last();
-        $content=view(env('THEME').'.admin.styles')->with('style',$style)->render();
+        $content=view('pink'.'.admin.styles')->with('style',$style)->render();
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
     }

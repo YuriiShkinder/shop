@@ -68,7 +68,7 @@
                 @if($k!==0)
                     @break
                 @endif
-                @include(env('THEME').'.comment',['items'=>$comment])
+                @include('pink'.'.comment',['items'=>$comment])
             @endforeach
 
         </ol>

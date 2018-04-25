@@ -1,4 +1,4 @@
-@extends(env('THEME').'.layouts.site')
+@extends('pink'.'.layouts.site')
 
 
 @section('content')

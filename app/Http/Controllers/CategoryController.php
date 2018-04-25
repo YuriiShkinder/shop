@@ -15,7 +15,7 @@ class CategoryController extends SiteController
     {
         $this->a_rep=$a_rep;
         $this->c_rep=$c_rep;
-        $this->template=env('THEME').'.category';
+        $this->template='pink'.'.category';
         parent::__construct(new MenusRepository(new Menu()));
     }
 
@@ -42,7 +42,7 @@ class CategoryController extends SiteController
         });
 
 
-        $content=view(env('THEME').'.content_category')->with(['category'=>$category,'articles'=>$articles])->render();
+        $content=view('pink'.'.content_category')->with(['category'=>$category,'articles'=>$articles])->render();
 
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
@@ -61,7 +61,7 @@ public function down(Category $category,DownCategories $down){
 
         $this->title=$down->title;
 
-    $content=view(env('THEME').'.content_category')->with(['category'=>$down,'articles'=>$articles])->render();
+    $content=view('pink'.'.content_category')->with(['category'=>$down,'articles'=>$articles])->render();
 
     $this->vars=array_add($this->vars,'content',$content);
 

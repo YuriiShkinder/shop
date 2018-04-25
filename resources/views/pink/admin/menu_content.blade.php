@@ -14,7 +14,7 @@
                 </thead>
                 @if($menus)
 
-                    @include(env('THEME').'.admin.custom-menu-items', array('items' => $menus->roots(),'paddingLeft' => ''))
+                    @include('pink'.'.admin.custom-menu-items', array('items' => $menus->roots(),'paddingLeft' => ''))
 
 
                 @endif

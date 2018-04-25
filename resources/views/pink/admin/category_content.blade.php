@@ -26,7 +26,7 @@
                             </td>
                         </tr>
                         @if($category->down)
-                            @include(env('THEME').'.admin.custom_category_item', array('categories' => $category,'paddingLeft' => '--'))
+                            @include('pink'.'.admin.custom_category_item', array('categories' => $category,'paddingLeft' => '--'))
 
                         @endif
                     @endforeach

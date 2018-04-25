@@ -13,7 +13,7 @@ class MenusController extends AdminController
     public function __construct(MenusRepository $m_rep)
     {
         $this->m_rep=$m_rep;
-        $this->template=env('THEME').'.admin.category';
+        $this->template='pink'.'.admin.category';
     }
 
     /**
@@ -25,7 +25,7 @@ class MenusController extends AdminController
     {
         $menu=$this->getMenus();
 
-        $this->content=view(env('THEME').'.admin.menu_content')->with('menus',$menu)->render();
+        $this->content=view('pink'.'.admin.menu_content')->with('menus',$menu)->render();
         return $this->renderOutput();
     }
 
@@ -71,7 +71,7 @@ class MenusController extends AdminController
 
         },['0' => 'Родительский пункт меню']);
 
-        $this->content = view(env('THEME').'.admin.menu_create')->with(['menus'=>$menus])->render();
+        $this->content = view('pink'.'.admin.menu_create')->with(['menus'=>$menus])->render();
 
         return $this->renderOutput();
 
@@ -135,7 +135,7 @@ class MenusController extends AdminController
 
         },['0' => 'Родительский пункт меню']);
 
-        $this->content = view(env('THEME').'.admin.menu_create')->with(['menu'=>$menu,'type'=>$type,'option'=>$option,'menus'=>$menus])->render();
+        $this->content = view('pink'.'.admin.menu_create')->with(['menu'=>$menu,'type'=>$type,'option'=>$option,'menus'=>$menus])->render();
 
 
         return $this->renderOutput();

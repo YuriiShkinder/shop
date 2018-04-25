@@ -12,7 +12,7 @@ class ArticleController extends SiteController
     public function __construct()
     {
         parent::__construct(new MenusRepository(new Menu()));
-        $this->template=env('THEME').'.articles';
+        $this->template='pink'.'.articles';
 
     }
 
@@ -30,7 +30,7 @@ class ArticleController extends SiteController
         }
 $comments= $article->comments()->where('view',1)->orderBy('like','desc')->get()->groupBy('parent_id');
 
-        $content=view(env('THEME').'.article_content')->with(['comments'=>$comments,'article'=>$article])->render();
+        $content=view('pink'.'.article_content')->with(['comments'=>$comments,'article'=>$article])->render();
 
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();
@@ -48,7 +48,7 @@ $comments= $article->comments()->where('view',1)->orderBy('like','desc')->get()-
         }
         $comments= $article->comments()->where('view',1)->where('prompt',$filter)->orderBy('like','desc')->get()->groupBy('parent_id');
 
-        $content=view(env('THEME').'.article_content')->with(['filter'=>true,'comments'=>$comments,'article'=>$article])->render();
+        $content=view('pink'.'.article_content')->with(['filter'=>true,'comments'=>$comments,'article'=>$article])->render();
 
         $this->vars=array_add($this->vars,'content',$content);
         return $this->renderOutput();

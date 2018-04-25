@@ -37,8 +37,8 @@ class UserRepository extends Repository
                 $str=str_random(8).'.jpg';
                 $img = \Image::make($image);
 
-                $img->fit(200, 300)->save(public_path() . '/' . env('THEME') . '/images/users/' . $str);
-                $data['img'] =asset(env('THEME')).'/images/users/'. $str;
+                $img->fit(200, 300)->save(public_path() . '/' . 'pink' . '/images/users/' . $str);
+                $data['img'] =asset('pink').'/images/users/'. $str;
             }
         }
 

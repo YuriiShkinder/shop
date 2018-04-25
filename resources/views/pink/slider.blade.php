@@ -9,13 +9,13 @@
             @foreach($sliders as $slider)
 
                 <li>
-                    <div class="slide-holder" style=" background:url({{asset(env('THEME'))}}/images/city2.jpg) no-repeat center center fixed; background-size: cover;height:483px; "  >
+                    <div class="slide-holder" style=" background:url({{asset('pink')}}/images/city2.jpg) no-repeat center center fixed; background-size: cover;height:483px; "  >
 
 
                         <div class="slide-content-holder inner" >
 
                             <div class="slide-content-holder-content" >
-                                <div class="sale" style="background: url({{env('THEME').'/images/sale.png' }}) no-repeat center center;background-size: 100px;"><p class="price_sale" >{{str_limit($slider->second->first()->title,6)}}</p></div>
+                                <div class="sale" style="background: url({{'pink'.'/images/sale.png' }}) no-repeat center center;background-size: 100px;"><p class="price_sale" >{{str_limit($slider->second->first()->title,6)}}</p></div>
                                 <div class="slide-title">
                                     <img src="{{$slider->img->max}}">
                                     <div>
