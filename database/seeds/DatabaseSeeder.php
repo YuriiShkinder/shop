@@ -33,9 +33,10 @@ class DatabaseSeeder extends Seeder
     public function getRoleUser(){
         $this->truncate('role_user');
         $users=\App\User::all();
+        $role=\App\Role::all()->random()->id;
         $data=[];
         foreach ($users as $user){
-           $data[]=['user_id'=>$user->id,'role_id'=>rand(1,2)];
+           $data[]=['user_id'=>$user->id,'role_id'=>$role];
         }
         DB::table('role_user')->insert($data);
 
