@@ -5,6 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(\App\Second_Categories::class, function (Faker $faker) {
     $categories=['Акция','Распродажа','Уценка'];
     $cat=$categories[rand(0,2)];
+    $article=\App\Article::get();
     switch ($cat){
         case 'Акция' :
             $sale=30;
@@ -20,7 +21,7 @@ $factory->define(\App\Second_Categories::class, function (Faker $faker) {
     return [
         'title'=>$cat,
         'alias'=>$faker->unique()->word,
-        'article_id'=>$faker->unique()->numberBetween(1,50),
+        'article_id'=>$article->random()->id,
         'sale'=>$sale
     ];
 });
