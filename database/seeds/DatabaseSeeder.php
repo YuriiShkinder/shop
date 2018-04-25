@@ -45,10 +45,10 @@ class DatabaseSeeder extends Seeder
     public function getCatArt(){
         $this->truncate('categories_articles');
         $articles=\App\Article::all();
-        $cat=\App\Category::all()->random()->id;
+        $cat=\App\Category::all();
         foreach ($articles as $article){
             DB::table('categories_articles')->insert([
-                'category_id'=>$cat,
+                'category_id'=>$cat->random()->id,
                 'article_id'=>$article->id
             ]);
         }
