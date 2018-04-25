@@ -34,23 +34,23 @@ class IndexController extends SiteController
     public function index()
     {
 
-//        $this->getCategories();
-//        $this->title='Home';
-//        $sliderItem=$this->getSliders();
-//        $categories=$this->getCategories();
-//        $comments=$this->getComments();
-//
-//        $content=view(env('THEME').'.content')->with([
-//            'sales'=>$categories->get('sale'),
-//            'categories'=>$categories->get('categories'),
-//            'articles'=>$categories->get('articles'),
-//            'comments'=>$comments
-//        ])->render();
-//        $this->vars=array_add($this->vars,'content',$content);
-//        $sliders=view(env('THEME').'.slider')->with('sliders',$sliderItem)->render();
-//        $this->vars=array_add($this->vars,'sliders',$sliders);
-//
-//        return $this->renderOutput();
+        $this->getCategories();
+        $this->title='Home';
+        $sliderItem=$this->getSliders();
+        $categories=$this->getCategories();
+        $comments=$this->getComments();
+dd($comments);
+        $content=view(env('THEME').'.content')->with([
+            'sales'=>$categories->get('sale'),
+            'categories'=>$categories->get('categories'),
+            'articles'=>$categories->get('articles'),
+            'comments'=>$comments
+        ])->render();
+        $this->vars=array_add($this->vars,'content',$content);
+        $sliders=view(env('THEME').'.slider')->with('sliders',$sliderItem)->render();
+        $this->vars=array_add($this->vars,'sliders',$sliders);
+
+        return $this->renderOutput();
     }
 
     public function getComments(){
