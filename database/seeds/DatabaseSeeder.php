@@ -97,11 +97,12 @@ class DatabaseSeeder extends Seeder
 
     public function getDownCat(){
         $this->truncate('down_categories');
-
+$article=\App\Article::get()->random()->id;
+$category=\App\Category::get()->random()->id;
         DB::table('down_categories')->insert([
-            ['category_id'=>3,'article_id'=>12,'title'=>'Car','alias'=>'car'],
-            ['category_id'=>3,'article_id'=>15,'title'=>'Moto','alias'=>'moto'],
-            ['category_id'=>3,'article_id'=>20,'title'=>'Boats','alias'=>'boats'],
+            ['category_id'=>$category,'article_id'=>$article,'title'=>'Car','alias'=>'car'],
+            ['category_id'=>$category,'article_id'=>$article,'title'=>'Moto','alias'=>'moto'],
+            ['category_id'=>$category,'article_id'=>$article,'title'=>'Boats','alias'=>'boats'],
         ]);
 }
 }
