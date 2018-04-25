@@ -1,4 +1,4 @@
-<ul style="position: absolute; top: 30px; width: 200px"  >
+<ul style="position: absolute; top: 30px; width: 200px;overflow: auto;max-height: 200px"  >
 <span style="text-decoration:underline">Поиск по категориям</span>
 
 @if($categories->isNotEmpty())

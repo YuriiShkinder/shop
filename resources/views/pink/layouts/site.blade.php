@@ -1,24 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 6]>
-<html id="ie6" class="ie" dir="ltr" lang="en-US">
-<![endif]-->
-<!--[if IE 7]>
-<html id="ie7" class="ie" dir="ltr" lang="en-US">
-<![endif]-->
-<!--[if IE 8]>
-<html id="ie8" class="ie" dir="ltr" lang="en-US">
-<![endif]-->
-<!--[if IE 9]>
-<html id="ie9" class="ie" dir="ltr" lang="en-US">
-<![endif]-->
-<!--[if gt IE 9]>
-<html class="ie" dir="ltr" lang="en-US">
-<![endif]-->
-<!--[if !IE]>
-<html dir="ltr" lang="en-US">
-<![endif]-->
 
-<!-- START HEAD -->
 <head>
 
     <meta charset="UTF-8" />
@@ -63,25 +44,11 @@
     <link rel='stylesheet' href="{{asset(env('THEME'))}}/css/font-awesome.css" type='text/css' media='all' />
     <link rel="stylesheet"  href="{{asset(env('THEME'))}}/bootstrap/css/bootstrap.min.css" type="text/css" media="all" />
 
-
-
     <!-- JAVASCRIPTs -->
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.js"></script>
     <script type="text/javascript" src="{{asset(env('THEME'))}}/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/comment-reply.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.quicksand.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.tipsy.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.prettyPhoto.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.cycle.min.js"></script>
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.anythingslider.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.eislideshow.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.easing.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.flexslider-min.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.aw-showcase.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/layerslider.kreaturamedia.jquery-min.js"></script>
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/shortcodes.js"></script>
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.colorbox-min.js"></script> <!-- nav -->
-    <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.tweetable.js"></script>
     <script type="text/javascript" src="{{asset(env('THEME'))}}/js/myscripts.js"></script>
     <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/bootstrap-filestyle.min.js"></script>
 
@@ -141,7 +108,6 @@
                 <!-- START CONTENT -->
             @yield('content')
             <!-- END CONTENT -->
-
             </div>
         </div>
         <!-- END PRIMARY -->
@@ -153,12 +119,8 @@
     <!-- END WRAPPER -->
 </div>
 <!-- END BG SHADOW -->
-
 <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.custom.js"></script>
 <script type="text/javascript" src="{{asset(env('THEME'))}}/js/contact.js"></script>
 <script type="text/javascript" src="{{asset(env('THEME'))}}/js/jquery.mobilemenu.js"></script>
-
-
 </body>
-<!-- END BODY -->
 </html>
