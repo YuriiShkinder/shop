@@ -15,6 +15,6 @@ class ArticlesTableSeeder extends Seeder
         DB::table('articles')->truncate();
         DB::statement("SET foreign_key_checks=1");
 
-        factory('App\Article', 150)->create();
+        factory('App\Article', 50)->create();
     }
 }
