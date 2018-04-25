@@ -39,7 +39,7 @@ class IndexController extends SiteController
         $sliderItem=$this->getSliders();
         $categories=$this->getCategories();
         $comments=$this->getComments();
-dd(env('THEME'));
+dd(getenv('APP_ENV'));
         $content=view(env('THEME').'.content')->with([
             'sales'=>$categories->get('sale'),
             'categories'=>$categories->get('categories'),
