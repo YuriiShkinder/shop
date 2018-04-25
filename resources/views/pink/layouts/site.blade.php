@@ -46,21 +46,23 @@
 
     <!-- JAVASCRIPTs -->
     <script type="text/javascript" src="{{asset('pink')}}/js/jquery.js"></script>
+    <script type="text/javascript" src="{{asset('pink')}}/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{asset('pink')}}/js/comment-reply.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.quicksand.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.tipsy.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.prettyPhoto.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.cycle.min.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.anythingslider.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.eislideshow.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.easing.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.flexslider-min.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.aw-showcase.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/layerslider.kreaturamedia.jquery-min.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/shortcodes.js"></script>
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.colorbox-min.js"></script> <!-- nav -->
-    <script type="text/javascript" src="{{asset('pink')}}/js/jquery.tweetable.js"></script>
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.quicksand.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.tipsy.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.prettyPhoto.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.cycle.min.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.anythingslider.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.eislideshow.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.easing.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.flexslider-min.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.aw-showcase.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/layerslider.kreaturamedia.jquery-min.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/shortcodes.js"></script>--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.colorbox-min.js"></script> <!-- nav -->--}}
+    {{--<script type="text/javascript" src="{{asset('pink')}}/js/jquery.tweetable.js"></script>--}}
     <script type="text/javascript" src="{{asset('pink')}}/js/myscripts.js"></script>
+    <script type="text/javascript" src="{{ asset('pink') }}/js/bootstrap-filestyle.min.js"></script>
 
 
 
